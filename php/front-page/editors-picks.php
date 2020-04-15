@@ -5,10 +5,10 @@ $editors_picks_args = array(
             'taxonomy' => 'syndication',
             'field' => 'slug',
             'terms' => 'editors-picks',
-            'numberposts' => 5,
             'fields' => 'ids'
-        )
-    )
+        ),
+    ),
+    'numberposts' => 5,
 );
 $editors_picks = get_posts( $editors_picks_args );
 ?>

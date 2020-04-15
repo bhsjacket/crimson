@@ -1,8 +1,38 @@
 <?php if (have_posts()) { while (have_posts()) { the_post(); ?>
-<main class="article-content">
+
+<div class="sidebar">
+    <?php if(get_field('post_template') !== 'cover') { ?>
+    <?php
+    $editors_picks_args = array(
+        'tax_query' => array(
+            array(
+                'taxonomy' => 'syndication',
+                'field' => 'slug',
+                'terms' => 'editors-picks',
+                'fields' => 'ids'
+            ),
+        ),
+        'numberposts' => 3,
+    );
+    $editors_picks = get_posts( $editors_picks_args );
+    ?>
+    <div id="recommended_posts">
+        <h2>Editors' Picks</h2>
+        <?php foreach($editors_picks as $editors_pick) { ?>
+        <div class="recommended-post">
+            <div class="post-title">
+                <a class="post-title" href="<?php echo esc_url(get_permalink($editors_pick)) ?>"><?php echo get_the_title($editors_pick); ?></a></li>
+            </div>
+        </div>
+        <?php } ?>
+    </div>
+    </div>
+    <?php } ?>
+</div>
+
+    <main class="article-content">
     <?php the_content(); ?>
 </main>
-
 
 <div class="author-boxes">
 <?php foreach( get_coauthors() as $coauthor ) { ?>

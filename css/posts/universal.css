@@ -9,6 +9,11 @@
 }
 
 /* Image */
+.image-in-post {
+    position: relative;
+    z-index: 1;
+}
+
 .normal-image {
     max-width: 600px;
     margin: 0 auto;
@@ -319,4 +324,50 @@ blockquote:before {
     left: 0;
     width: 100%;
     height: 100%;
+}
+
+.sidebar {
+    position: fixed;
+    top: 0;
+    height: 100%;
+    width: calc(calc(100% - 660px)/2);
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.sidebar #recommended_posts {
+    max-width: 200px;
+}
+
+.sidebar #recommended_posts {
+    font-family: 'PT Serif', serif;
+}
+
+.sidebar #recommended_posts .recommended-post .post-title a {
+    color: black;
+    font-size: 16px;
+    text-decoration: none;
+}
+
+.sidebar #recommended_posts h2 {
+    font-family: 'Noe Display', serif;
+    font-style: italic;
+    font-weight: normal;
+    font-size: 24px;
+    border-bottom: solid #e7e7e7 1px;
+}
+
+.sidebar #recommended_posts .recommended-post a:not(.post-title) img {
+    width: 100%;
+}
+
+.sidebar #recommended_posts .recommended-post > .post-title {
+    margin-bottom: 10px;
+}
+
+@media all and (max-width: 1140px) {
+    .sidebar {
+        display: none!important;
+    }
 }
