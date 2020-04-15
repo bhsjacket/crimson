@@ -1,5 +1,6 @@
 <?php if (have_posts()) { while (have_posts()) { the_post(); ?>
 
+<?php /*
 <div class="sidebar">
     <?php if(get_field('post_template') !== 'cover') { ?>
     <?php
@@ -29,8 +30,9 @@
     </div>
     <?php } ?>
 </div>
+*/ ?>
 
-    <main class="article-content">
+<main class="article-content">
     <?php the_content(); ?>
 </main>
 

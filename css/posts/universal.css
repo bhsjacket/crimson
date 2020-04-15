@@ -10,32 +10,29 @@
 
 /* Image */
 .image-in-post {
-    position: relative;
-    z-index: 1;
+    /* position: relative;
+    z-index: 1; */
 }
 
-.normal-image {
-    max-width: 600px;
-    margin: 0 auto;
+.normal-image,
+.wider-image {
     padding: 15px;
+    background-color: white;
 }
 
 .normal-image img {
-    width: 100%;
+    max-width: 600px;
     display: block;
+    margin: 0 auto;
 }
 
 /* Wider Image */
-.wider-image {
+.wider-image img {
     max-width: 800px;
     margin: 0 auto;
-    padding: 15px;
-}
-
-.wider-image img {
-    width: 100%;
     display: block;
 }
+
 /* Full-Width Image */
 .full-width-image {
     max-width: 100%;
