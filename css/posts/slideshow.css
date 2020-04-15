@@ -1,0 +1,230 @@
+html,
+body {
+    position: relative;
+    height: 100%;
+    background-color: black;
+}
+
+.swiper-container {
+    width: 100vw;
+    height: 100vh;
+}
+
+.slideshow-image {
+    width: 100vw;
+    height: 100vh;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.cover-image {
+    background-size: cover;
+}
+
+.logo {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    opacity: 1;
+    z-index: 10;
+    width: 225px;
+    transition: all 0.2s;
+}
+
+.slideshow-image-meta {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    background-color: rgb(0, 0, 0, 0.75);
+    color: white;
+    padding-left: 20px;
+    padding-right: 20px;
+    max-width: 350px;
+    max-height: 40vh;
+}
+
+.slideshow-image-meta-caption {
+    font-family: 'PT Serif', serif;
+    color: white;
+    font-size: 16px;
+
+}
+
+.slideshow-image-meta-author {
+    font-family: 'PT Sans', sans-serif;
+    color: white;
+    font-size: 9px;
+    text-transform: uppercase;
+    text-align: right;
+}
+
+.swiper-button-next,
+.swiper-button-prev {
+    filter: saturate(0) brightness(100) drop-shadow(1px 1px 3px rgba(0,0,0,.2))!important;
+    transition: all 0.2s;
+}
+
+.swiper-button-disabled {
+    display: none;
+}
+
+.article-section,
+.article-section a,
+.article-byline,
+.article-byline a {
+    font-family: 'PT Sans', sans-serif;
+    font-size: 16px;
+    text-transform: uppercase;
+    color: white !important;
+    text-decoration: none;
+    font-weight: normal;
+}
+
+.article-code-byline,
+.article-code-byline a,
+.article-code-byline span {
+    font-family: 'PT Serif', sans-serif;
+    font-size: 17px;
+    color: white !important;
+}
+
+.article-section {
+    margin-bottom: 10px;
+}
+
+.article-byline {
+    margin-top: 10px;
+}
+
+.article-title {
+    font-family: 'Noe Display', serif;
+    font-size: 48px !important;
+    color: white;
+    max-width: 600px;
+    line-height: 1;
+    margin-top: 0;
+}
+
+.cover {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    z-index: 50;
+    max-width: 600px;
+    width: 100%;
+}
+
+.article-text {
+    font-size: 17px;
+    color: white;
+    text-align: left;
+}
+
+.last-slide {
+    background-color: #202125;
+}
+
+@media all and (orientation:portrait) {
+    .slideshow-image:not(.cover-image) {
+        background-size: contain!important;
+    }
+}
+
+.swiper-fullscreen {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    margin-top: -22px;
+    left: 15px;
+    z-index: 10;
+    width: 44px!important;
+    height: 44px!important;
+    background-size: contain;
+    filter: drop-shadow(1px 1px 3px rgba(0,0,0,.2))!important;
+    background-image: url("fullscreen-open.svg");
+}
+
+.swiper-fullscreen.fullscreen-close {
+    background-image: url("fullscreen-close.svg")!important;
+}
+
+@media all and (orientation: portrait) {
+    .swiper-fullscreen {
+        display: none;
+    }
+}
+
+.swiper-button-next:focus,
+.swiper-button-prev:focus {
+    outline: none;
+}
+
+.swiper-restart {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    margin-top: -22px;
+    right: 15px;
+    z-index: 10;
+    width: 44px!important;
+    height: 44px!important;
+    background-size: contain;
+    filter: drop-shadow(1px 1px 3px rgba(0,0,0,.2))!important;
+    background-image: url("restart.svg");
+    background-repeat: no-repeat;
+}
+
+@media all and (orientation: portrait) {
+    .swiper-restart {
+        display: none;
+    }
+}
+
+.last-slide .cover {
+    display: flex;
+    max-width: 800px;
+}
+
+.last-slide .cover > div {
+    width: calc(100% / 3);
+    padding: 15px;
+}
+
+.last-slide .cover img {
+    width: 100%;
+}
+
+.last-slide .cover .recommended-post {
+    margin: 15px;
+    background-color: rgba(255, 255, 255, 0.25);
+}
+
+.last-slide .cover .recommended-post p {
+    margin-top: 0;
+    font-size: 17px;
+    font-family: 'PT Serif', serif;
+}
+
+.last-slide .cover .recommended-post p a {
+    color: white;
+}
+
+@media all and (orientation: portrait) {
+    .cover {
+        display: block!important;
+    }
+
+    .last-slide .cover > div {
+        width: initial!important;
+    }
+
+    .last-slide .cover {
+        max-width: 60%!important;
+    }
+
+    .last-slide .cover .recommended-post {
+        display: none!important;
+    }
+}

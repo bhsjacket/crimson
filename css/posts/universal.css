@@ -1,0 +1,322 @@
+/* Content */
+.article-content > p {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 15px;
+    font-family: 'PT Serif', serif;
+    font-size: 17px;
+    line-height: 1.5em;
+}
+
+/* Image */
+.normal-image {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 15px;
+}
+
+.normal-image img {
+    width: 100%;
+    display: block;
+}
+
+/* Wider Image */
+.wider-image {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 15px;
+}
+
+.wider-image img {
+    width: 100%;
+    display: block;
+}
+/* Full-Width Image */
+.full-width-image {
+    max-width: 100%;
+    margin: 0 auto;
+}
+
+@media all and (orientation:portrait) {
+    .full-width-image {
+        padding: 15px;
+    }
+}
+
+.full-width-image img {
+    width: 100%;
+    display: block;
+}
+
+/* Image Captions */
+.caption-group {
+    display: flex;
+    max-width: 600px;
+    margin: 0 auto;
+    padding-top: 5px;
+}
+.caption {
+    width: 80%;
+    padding-right: 5px;
+}
+.photographer {
+    width: 20%;
+    padding-left: 5px;
+}
+.caption p {
+    font-family: 'PT Serif', serif;
+    color: #999999;
+    margin: 0;
+    margin-top: -2px;
+    font-size: 13px;
+}
+.photographer p {
+    text-align: right;
+    font-family: 'PT Sans', sans-serif;
+    text-transform: uppercase;
+    font-size: 10px;
+    color: #999999;
+    margin: 0;
+}
+
+/* Author Boxes */
+.author-boxes {
+    padding: 5px 15px 0 15px;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+@media all and (orientation:portrait) {
+    .author-box {
+        display: block!important;
+    }
+    .author-box-info-column {
+        padding-left: 0!important   ;
+    }
+    .author-box-avatar-column {
+        padding-right: 0!important;
+        padding-bottom: 10px;
+    }
+    .author-box-info-column {
+        width: 100%!important;
+    }
+}
+
+.author-box {
+    display: flex;
+    background-color: #e7e7e7;
+    padding: 15px;
+    border-radius: 3px;
+    margin: 15px 0;
+}
+
+.author-box-avatar-column {
+    width: 20%;
+}
+
+.author-box-info-column {
+    width: 80%;
+}
+
+.author-box-name {
+    margin-top: 0;
+    margin-bottom: 5px;
+    font-family: "Noe Display", serif;
+    font-weight: normal;
+}
+
+.author-box-bio {
+    margin: 0;
+    font-family: "PT Serif", serif;
+    font-size: 16px;
+    margin-bottom: 5px;
+}
+
+.author-box-avatar {
+    width: 100%;
+    border-radius: 3px;
+}
+
+.author-box-avatar img {
+    margin-bottom -4px;
+}
+
+.author-box-avatar-column {
+    padding-right: 5px;
+}
+
+.author-box-info-column {
+    padding-left: 10px;
+}
+
+.author-box-social {
+    padding-top: 10px;
+}
+
+/* Byline */
+.byline .avatars {
+    display: inline-block;
+}
+.byline img {
+    width: 30px;
+    border-radius: 100%;
+    border: 3px solid white;
+    vertical-align: middle;
+    display: inline-block;
+}
+
+.byline img:not(:first-child) {
+    margin-left: -20px;
+    transition: all 0.2s;
+}
+
+.byline .byline-authors {
+    font-family: 'PT Sans', sans-serif;
+}
+
+.byline .byline-authors a {
+    text-decoration: underline;
+    text-decoration-color: #999999;
+    color: black;
+}
+
+.byline .byline-authors a:hover {
+    text-decoration: none;
+}
+
+blockquote {
+    max-width: 500px;
+    margin: 0 auto;
+    font-family: 'Noe Display', serif;
+    font-size: 24px;
+    font-style: italic;
+    position: relative;
+}
+
+blockquote:before {
+    display: block;
+    content: "\201C";
+    font-size: 80px;
+    position: absolute;
+    left: -40px;
+    top: -20px;
+    color: #800000;
+}
+
+@media all and (orientation:portrait) {
+    .sharing {
+        display: none;
+    }
+
+    .byline {
+        width: 100%!important;
+    }
+
+    .article-title {
+        font-size: 32px!important;
+        margin-top: 15px!important;
+    }
+
+    #article-header {
+        width: initial!important;
+    }
+}
+
+#article-header {
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 15px;
+}
+
+/* Featured Image */
+.featured-image img {
+    width: 100%;
+    padding-top: 15px;
+}
+
+/* Headline */
+.article-title {
+    font-size: 48px;
+    font-family: 'Noe Display', serif;
+    font-weight: normal;
+    line-height: 1;
+    margin: 20px 0 0 0;
+    padding-top: 5px;
+}
+
+/* Post Meta */
+
+.post-meta {
+    display: flex;
+    align-items: center;
+    padding-bottom: 15px;
+    padding-top: 15px;
+}
+
+.post-meta .byline {
+    width: 80%;
+}
+
+.post-meta .sharing {
+    width: 20%;
+    text-align: right;
+    font-family: 'PT Sans', sans-serif;
+    font-size: 16px;
+}
+
+.post-meta .sharing a {
+    margin-left: 5px;
+    font-size: 18px;
+    transition: all 0.2s;
+}
+
+.post-meta .sharing i {
+    color: black;
+    opacity: 0.5;
+    transition: all 0.2s;
+}
+
+.post-meta .sharing i:hover {
+    color: #800000;
+    opacity: 1;
+    transition: all 0.2s;
+}
+
+/* YouTube Video */
+
+.embed-container {
+    position: relative;
+    padding-bottom: 56.25%;
+    height: 0;
+    overflow: hidden;
+    max-width: 100%;
+}
+
+.embed-container iframe,
+.embed-container object,
+.embed-container embed {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+/* Vimeo Video */
+.embed-container {
+    position: relative;
+    padding-bottom: 56.25%;
+    height: 0;
+    overflow: hidden;
+    max-width: 100%;
+}
+.embed-container iframe,
+.embed-container object,
+.embed-container embed {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
