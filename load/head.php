@@ -21,6 +21,10 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
+<?php if(is_front_page()) { ?>
+    <link href="<?php echo get_template_directory_uri(); ?>/css/homepage.css" rel="stylesheet">
+<?php } ?>
+
 <?php if( get_post_type() == 'post' ) { ?>
     <link href="<?php echo get_template_directory_uri(); ?>/css/posts/<?php echo get_field('post_template') ?>.css" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.1/js/swiper.min.js"></script>

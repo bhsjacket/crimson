@@ -7,7 +7,8 @@ function shortcode_styles() {
     #su-generator-tools,
     #su-generator-search-pro-tip,
     #su-generator-filter,
-    .su-generator-presets {
+    .su-generator-presets,
+    #insert-media-button {
       display: none!important;
     } 
     #su-generator-search {

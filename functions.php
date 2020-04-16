@@ -25,6 +25,17 @@
 add_theme_support( 'post-thumbnails' );
 // End Featured Image
 
+// Modify Excerpts
+function crimson_excerpt_length( $length ) {
+    return 50;
+}
+add_filter( 'excerpt_length', 'crimson_excerpt_length');
+function crimson_excerpt_more( $more ) {
+    return '...';
+}
+add_filter( 'excerpt_more', 'crimson_excerpt_more' );
+// End Modify Excerpts
+
 // Upscale Cropping
 function alx_thumbnail_upscale( $default, $orig_w, $orig_h, $new_w, $new_h, $crop ){
     if ( !$crop ) return null; // let the wordpress default function handle this

@@ -1,0 +1,24 @@
+Red: #800000
+Red Darker: #5A0000
+
+Blue: #13354E
+
+Vibrant Green: #008347
+Cold Felt Green: #004E45
+
+Orange: #C74600
+
+Purple: #622956
+
+Font Steps:
+10, 12, 14, 16, 17, 18, 24, 32, 48, 64, 72
+
+if ( $front_feature->have_posts() ) {
+	while ( $front_feature->have_posts() ) {
+		$front_feature->the_post();
+	}
+} else {
+
+}
+
+wp_reset_postdata();

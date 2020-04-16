@@ -1,12 +1,10 @@
 <?php get_header(); ?>
+<?php if(get_field('big_header', 'option') == 'enabled') { ?>
+<?php get_template_part('php/front-page/big-header'); ?>
+<?php } ?>
 
-    <div class="front-page-outer">
-        <main id="front-page">
-            <?php get_template_part('php/front-page/a1'); ?>
-        </main>
-        <div id="front-page-sidebar">
-            <?php get_template_part('php/front-page/editors-picks'); ?>
-        </div>
-    </div>
+<main id="front-page">
+    <?php get_template_part('php/front-page/f2f-top'); ?>
+</main>
 
 <?php get_footer(); ?>
