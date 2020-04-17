@@ -5,6 +5,7 @@
 
 <main id="front-page">
     <?php get_template_part('php/front-page/f2f-top'); ?>
+    <?php get_template_part('php/front-page/grid'); ?>
 </main>
 
 <?php get_footer(); ?>

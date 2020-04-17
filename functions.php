@@ -222,3 +222,61 @@ function remove_user_fields()
 add_action( 'admin_head-user-edit.php', 'remove_user_fields' );
 add_action( 'admin_head-profile.php',   'remove_user_fields' );
 // End User Contact Methods
+
+// Columns
+function crimson_columns() {
+
+	$labels = array(
+		'name'                  => _x( 'Columns', 'Post Type General Name', 'crimson' ),
+		'singular_name'         => _x( 'Column', 'Post Type Singular Name', 'crimson' ),
+		'menu_name'             => __( 'Columns', 'crimson' ),
+		'name_admin_bar'        => __( 'Column', 'crimson' ),
+		'archives'              => __( 'Column Archives', 'crimson' ),
+		'attributes'            => __( 'Column Attributes', 'crimson' ),
+		'parent_item_colon'     => __( 'Parent Column:', 'crimson' ),
+		'all_items'             => __( 'All Columns', 'crimson' ),
+		'add_new_item'          => __( 'Add New Column', 'crimson' ),
+		'add_new'               => __( 'Add New', 'crimson' ),
+		'new_item'              => __( 'New Column', 'crimson' ),
+		'edit_item'             => __( 'Edit Column', 'crimson' ),
+		'update_item'           => __( 'Update Column', 'crimson' ),
+		'view_item'             => __( 'View Column', 'crimson' ),
+		'view_items'            => __( 'View Columns', 'crimson' ),
+		'search_items'          => __( 'Search Column', 'crimson' ),
+		'not_found'             => __( 'Not found', 'crimson' ),
+		'not_found_in_trash'    => __( 'Not found in Trash', 'crimson' ),
+		'featured_image'        => __( 'Featured Image', 'crimson' ),
+		'set_featured_image'    => __( 'Set featured image', 'crimson' ),
+		'remove_featured_image' => __( 'Remove featured image', 'crimson' ),
+		'use_featured_image'    => __( 'Use as featured image', 'crimson' ),
+		'insert_into_item'      => __( 'Insert into column', 'crimson' ),
+		'uploaded_to_this_item' => __( 'Uploaded to this column', 'crimson' ),
+		'items_list'            => __( 'Column list', 'crimson' ),
+		'items_list_navigation' => __( 'Column list navigation', 'crimson' ),
+		'filter_items_list'     => __( 'Filter column list', 'crimson' ),
+	);
+	$args = array(
+		'label'                 => __( 'Column', 'crimson' ),
+		'description'           => __( 'Columns', 'crimson' ),
+		'labels'                => $labels,
+		'supports'              => array( 'title', 'editor', 'revisions', 'custom-fields', 'author' ),
+		'taxonomies'            => array( 'columnist' ),
+		'hierarchical'          => false,
+		'public'                => true,
+		'show_ui'               => true,
+		'show_in_menu'          => true,
+		'menu_position'         => 5,
+		'menu_icon'             => 'dashicons-admin-comments',
+		'show_in_admin_bar'     => true,
+		'show_in_nav_menus'     => true,
+		'can_export'            => true,
+		'has_archive'           => 'column',
+		'exclude_from_search'   => false,
+		'publicly_queryable'    => true,
+		'capability_type'       => 'page',
+	);
+	register_post_type( 'column', $args );
+
+}
+add_action( 'init', 'crimson_columns', 0 );
+// End Columns

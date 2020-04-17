@@ -957,3 +957,40 @@ blockquote:before {
         display: none!important;
     }
 } */
+
+#column .column-header {
+    max-width: 600px;
+    margin: 0 auto 20px auto;
+}
+
+#column {
+    margin: 30px 0;
+}
+
+#column .column-header .avatars img:not(:first-child) {
+    margin-left: -50px;
+}
+
+#columns .column-header .avatars {
+    margin: 0 auto;
+    display: inline;
+}
+
+#column .column-header .avatars img {
+    border: solid 3px white;
+    border-radius: 100%;
+    margin: 0 auto;
+    display: block;
+}
+
+#column .column-header .column-byline a,
+#column .column-header .column-byline {
+    font-size: 48px;
+    line-height: 1.5em;
+    margin: 0 auto;
+    font-family: 'Noe Display', serif;
+    font-weight: normal;
+    color: black;
+    margin-top: 15px;
+    text-decoration: none;
+}
