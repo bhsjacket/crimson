@@ -248,7 +248,7 @@
     max-width: 600px;
     margin: 0 auto;
     text-align: center;
-    padding-bottom: 30px;
+    padding-bottom: 15px;
 }
 
 .big-header .big-header-info .big-title {
@@ -266,7 +266,7 @@
     font-family: 'PT Sans', sans-serif;
     color: white;
     display: block;
-    padding-top: 30px;
+    padding-top: 35px;
 }
 
 .grid {
@@ -340,113 +340,137 @@
 
 /* ONE-THREE POSTS */
 .one3 {
-    display: flex;
-    padding-bottom: 30px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    grid-gap: 15px;
 }
 
-.one3 .one3-left,
-.one3 .one3-right {
-    width: 50%;
-    text-decoration: none;
-}
-
-.one3 .one3-left .one3-left-title {
-    background-color: #800000;
-    /* transition: background-color 0.2s; */
-    margin-top: -4px;
-}
-
-/* .one3 .one3-left:hover .one3-left-title {
-    background-color: #5A0000;
-    transition: background-color 0.2s;
-} */
-
-.one3 .one3-left img {
+.one3-image img {
     width: 100%;
 }
 
-.one3 .one3-left .one3-left-title h2 {
-    margin: 0;
-    color: white;
-    font-family: 'Noe Display', serif;
-    font-weight: normal;
-    line-height: 1em;
-    font-size: 24px;
-    padding: 15px;
-}
-
-.one3 .one3-right {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-}
-
-.one3-left-image .one3-right,
-.one3-right-image .one3-left {
-    padding-left: 15px;
-}
-
-.one3-left-image .one3-left,
-.one3-right-image .one3-right {
-    padding-right: 15px;
-}
-
-.one3 .one3-right .one3-right-post {
-    height: calc(calc(100% / 3) - 50px);
+.one3 .one3-image-title {
     background-color: #800000;
+    margin: 0;
     padding: 15px;
+    color: white;
+    font-family: 'Noe Display', serif;
+    font-weight: normal;
+}
+
+.one3 > a {
     text-decoration: none;
-    /* transition: background-color 0.2s;*/
+}
+
+.one3-post {
+    background-color: #800000;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    padding: 15px;
 }
 
-/* .one3 .one3-right .one3-right-post:hover {
-    background-color: #5A0000;
-    transition: background-color 0.2s;
-} */
-
-.one3 .one3-byline {
-    margin: 0;
-    color: white;
-    font-family: 'PT Sans', serif;
-    text-transform: uppercase;
-    font-size: 13px;
-    box-shadow: none;
+.one3 img {
+    width: 100%;
 }
 
-.one3 .one3-right .one3-right-post h2 {
+.one3-post h2 {
     margin: 0;
     color: white;
     font-family: 'Noe Display', serif;
     font-weight: normal;
+    max-width: 70%;
+}
+
+.one3-post p,
+.one3-post p:hover {
+    margin: 0;
+    color: white;
+    font-family: 'PT Sans', sans-serif;
+    font-size: 13px;
+    text-transform: uppercase;
+    box-shadow: none;
 }
 
 @media all and (orientation: portrait) {
     .one3 {
-        display: block;
+        grid-template-columns: 1fr;
+        grid-template-rows: repeat(4, 0.35fr);
+        grid-row-gap: 10px;
     }
-    .one3 .one3-left h2 {
-        margin-top: -4px!important;
+    .one3-post {
+
     }
-    .one3 .one3-right {
-        padding: 0;
-        width: 100%;
-        margin-top: -3px;
+    .one3-post:first-child {
+        grid-area: 2 / 1 / 3 / 2!important;
     }
-    .one3 .one3-right .one3-right-post,
-    .one3-right-image {
-        margin-bottom: 15px;
+
+    .one3-post:nth-child(2) {
+        grid-area: 3 / 1 / 4 / 2!important;
     }
-    .one3-right-image .one3-left img {
-        margin-left: -15px;
+
+    .one3-post:last-child {
+        grid-area: 4 / 1 / 5 / 2!important;
     }
-    .one3 .one3-byline {
-        display: none;
-    }
-    .one3 {
-        padding-bottom: 0!important;
+
+    .one3-image {
+        grid-area: 1 / 1 / 2 / 2!important;
     }
 }
 /* END ONE-THREE POSTS */
+
+/* FOUR POSTS */
+/* .four {
+    display: flex;
+    padding-bottom: 15px;
+} */
+
+.four {
+    padding-bottom: 15px;
+    display: grid;
+    grid-gap: 15px;
+    grid-template-columns: repeat(4, 1fr);
+}
+
+.four .four-post {
+    background-color: #800000;
+    display: flex;
+    flex-direction: column;
+    color: white;
+    text-decoration: none;
+}
+
+.four .four-post img {
+    width: 100%;
+}
+
+.four .four-post .four-post-bottom {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+    padding: 15px;
+}
+
+.four .four-post .four-post-bottom p {
+    color: white;
+    font-family: 'PT Sans', sans-serif;
+    text-transform: uppercase;
+    font-size: 13px;
+    margin: 0;
+    box-shadow: none;
+}
+
+.four .four-post .four-post-bottom h2 {
+    font-family: 'Noe Display', serif;
+    font-weight: normal;
+    margin: 0 0 30px 0;
+}
+
+@media all and (orientation: portrait) {
+    .four {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+/* END FOUR POSTS */

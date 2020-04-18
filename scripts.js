@@ -1,9 +1,13 @@
-jQuery(document).ready(function($) {
-  $(".article-content > p:last-child").append(" &#x25C6;"); // Add tombstone
+jQuery(document).ready(function() {
+  jQuery(".article-content > p:last-child").append(" &#x25C6;"); // Add tombstone
+});
+
+/* HEADLINE BALANCER
+jQuery(document).ready(function() {
   waitForWebfonts(['Noe Display'], function() {
     textBalancer.initialize('.balance-text, h1, h2, h3, .headline, a h1, a h2, a h3'); // Start balancer.js
   });
-});
+})
 
 function waitForWebfonts(fonts, callback) {
   var loadedFonts = 0;
@@ -51,6 +55,7 @@ function waitForWebfonts(fonts, callback) {
       })(fonts[i]);
   }
 };
+*/
 
 /*
 jQuery(document).ready(function() {
