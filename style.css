@@ -994,3 +994,24 @@ blockquote:before {
     margin-top: 15px;
     text-decoration: none;
 }
+
+/* 404 Page */
+#error-page {
+    width: 100%;
+    margin: 0 auto;
+    text-align: center;
+    height: calc(100vh - 119px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-position: center bottom;
+    background-size: cover;
+}
+
+#error-page p {
+    font-family: 'Noe Display', serif;
+    font-size: 64px;
+    font-weight: normal;
+    font-style: italic;
+    color: white;
+}
