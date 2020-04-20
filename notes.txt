@@ -13,12 +13,13 @@ Purple: #622956
 Font Steps:
 10, 12, 14, 16, 17, 18, 24, 32, 48, 64, 72
 
-if ( $front_feature->have_posts() ) {
-	while ( $front_feature->have_posts() ) {
-		$front_feature->the_post();
-	}
-} else {
+Top Border:
+box-shadow: inset 0px 5px 0px 0px rgba(128,0,0,1);
 
-}
+Bottom Border:
+box-shadow: inset 0px -5px 0px 0px rgba(128,0,0,1);
 
-wp_reset_postdata();
+Left Border: box-shadow: inset 5px 0px 0px 0px rgba(128,0,0,1);
+
+Right Border:
+box-shadow: inset -5px 0px 0px 0px rgba(128,0,0,1);
