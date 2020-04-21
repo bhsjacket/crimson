@@ -1,140 +1,77 @@
-<?php
-/**
- * ----------------------------------------
- * ONE3 POST LAYOUT SETTINGS:
- * Example:
- * <?php set_query_var('display-info', 'news,0,#800000,#ffffff,false');
- * get_template_part('php/front-page/one2/one2-right'); ?>
- * Settings:
- * - category slug (required)
- * --- string
- * - offset (required)
- * --- number
- * - background color (required)
- * --- CSS color value
- * - text color (required)
- * --- CSS color value
- * - show image on 3 posts (required)
- * --- true/false
- * - large image position (required)
- * --- left/right
- * ALL SETTINGS ARE REQUIRED!
- * ----------------------------------------
- * FOUR POSTS LAYOUT SETTINGS:
- * Example:
- * <?php set_query_var('display-info', 'news,0,#800000,#ffffff');
- * get_template_part('php/front-page/four'); ?>
- * Settings:
- * - category slug (required)
- * --- string
- * - offset (required)
- * --- number
- * - background color (required)
- * --- CSS color value
- * - text color (required)
- * --- CSS color value
- * - number of posts (required)
- * --- number, multiple of 4
- * ALL SETTINGS ARE REQUIRED!
- * ----------------------------------------
- * HEADING:
- * Example:
- * set_query_var('display-info', array(
- *  'title' => 'News',
- *  'background-color' => '#e7e7e7',
- *  'text-color' => '#000000',
- *  'alignment' => 'center',
- *  'border' => array(
- *      'color' => '#800000',
- *      'position' => 'top'
- *  )
- * ));
- * ----------------------------------------
- */
-?>
-
 <?php get_header(); ?>
 <?php if(get_field('big_header', 'option') == 'enabled') { ?>
 <?php get_template_part('php/front-page/big-header'); ?>
 <?php } ?>
 
+<?php
+/**
+ * SLIDER ---------------
+ * category - category slug
+ * offset - number
+ * background-color - HEX color value
+ * text-color - HEX color value
+ * pattern - CSS class from styles.css, background pattern section
+ * posts-position - bottom/top
+ * full-width - true/false
+ * image-size - preset size, optional
+ * 
+ * TOP STORY ------------
+ * front-feature - true/false, overrides category
+ * category - category slug
+ * offset - number
+ * background-color - HEX color value
+ * text-color - HEX color value
+ * pattern - CSS class from styles.css, background pattern section
+ * image-position - right/left
+ * align - top/bottom
+ * 
+ * FIVE POST GRID -------
+ * category - category slug
+ * offset - number
+ * posts - number, multiple of 5 recommended
+ */
+?>
+
 <main id="front-page">
 <?php
 set_query_var('display-info', array(
-    'category' => 'news',
-    'offset' => 0,
-    'background-color' => '#e7e7e7',
-    'text-color' => '#000000',
-    'alignment' => 'center',
-    'pattern' => 'plus', // plus, plus-dark, squiggle, squiggle-dark, tic-tac-toe, tic-tac-toe-dark, rain, rain-dark, shapes, shapes-dark
-    'image-position' => 'right',
+    'front-feature' => true,
+    'category' => 'city', // category slug (required)
+    'offset' => 0, // number (optional)
+    'background-color' => '#800000', // HEX color value (required)
+    'text-color' => '#FFFFFF', // HEX color value (required)
+    'pattern' => 'cameras-dark animated_xy', // plus, plus-dark, squiggle, squiggle-dark, tic-tac-toe, tic-tac-toe-dark, rain, rain-dark, shapes, shapes-dark, texture, texture-dark, food, food-dark, magnet, magnet-dark, squares, squares-dark (optional)
+    'image-position' => 'right', // left, right (required)
+    'align' => 'bottom' // top, bottom (required)
 ));
 get_template_part('php/front-page/top-story');
+?>
 
-set_query_var('display-info', array(
-    'title' => 'News',
-    'background-color' => '#e7e7e7',
-    'text-color' => '#000000',
-    'alignment' => 'center',
-    'border' => array(
-        'color' => '#800000',
-        'position' => 'top'
-    )
-));
-get_template_part('php/front-page/header');
+<?php
+get_template_part('php/front-page/columnists');
+?>
 
+<?php
 set_query_var('display-info', array(
-    'category' => 'news',
-    'offset' => 0,
-    'background-color' => '#e7e7e7',
-    'text-color' => '#000000',
-    'posts' => 4,
-    'border' => array(
-        'position' => 'bottom',
-        'color' => '#800000',
-    ),
+    'category' => 'news', // category slug (required)
+    'offset' => 0, // number (optional)
+    'background-color' => '#800000', // HEX color value (required)
+    'text-color' => '#FFFFFF', // HEX color value (required)
+    'pattern' => 'plus', // plus, plus-dark, squiggle, squiggle-dark, tic-tac-toe, tic-tac-toe-dark, rain, rain-dark, shapes, shapes-dark, texture, texture-dark, food, food-dark, magnet, magnet-dark, squares, squares-dark (optional)
+    'posts-position' => 'bottom', // top, bottom (required)
+    'full-width' => true,
+    'image-size' => 'six-three',
 ));
-get_template_part('php/front-page/four');
+get_template_part('php/front-page/slider');
+?>
 
+<?php
 set_query_var('display-info', array(
-    'category' => 'news',
-    'offset' => 0,
-    'background-color' => '#e7e7e7',
-    'text-color' => '#000000',
-    'image-position' => 'right',
-    'display-image' => false,
-    'border' => array(
-        'position' => 'bottom',
-        'color' => '#800000',
-    ),
+    'category' => 'news', // category slug
+    'offset' => 0, // number
+    'posts' => 10 // number, multiple of 5
 ));
-get_template_part('php/front-page/one3');
-
-set_query_var('display-info', array(
-    'category' => 'news',
-    'offset' => 0,
-    'background-color' => '#ffe500',
-    'text-color' => '#000000',
-    'posts' => 4,
-    'border' => array(
-        'position' => 'top',
-        'color' => '#800000',
-    ),
-));
-get_template_part('php/front-page/four');
-
-set_query_var('display-info', array(
-    'category' => 'news',
-    'offset' => 0,
-    'background-color' => '#ffe500',
-    'text-color' => '#000000',
-    'posts' => 4,
-    'border' => array(
-        'position' => 'top',
-        'color' => '#800000',
-    ),
-));
-get_template_part('php/front-page/four');
+get_template_part('php/front-page/five');
 ?>
 </main>
 

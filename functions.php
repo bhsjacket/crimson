@@ -55,9 +55,10 @@ add_filter( 'image_resize_dimensions', 'alx_thumbnail_upscale', 10, 6 );
 // End Upscale Cropping
 
 
-// Add 3:2 Image Size
-add_image_size( 'three-two', 1200, 800, true );
-// End Add 3:2 Image Size
+// Add Image Sizes
+add_image_size( 'three-two', 1200, 800, true ); // 3:2 ratio
+add_image_size( 'six-three', 1200, 600, true ); // 6:3 ratio
+// End Add Image Sizes
 
 // Title Tag
 add_theme_support( 'title-tag' );
@@ -280,3 +281,66 @@ function crimson_columns() {
 }
 add_action( 'init', 'crimson_columns', 0 );
 // End Columns
+
+// Trim String
+function trimstring($text, $maxchar, $end='...') {
+    if (strlen($text) > $maxchar || $text == '') {
+        $words = preg_split('/\s/', $text);      
+        $output = '';
+        $i      = 0;
+        while (1) {
+            $length = strlen($output)+strlen($words[$i]);
+            if ($length > $maxchar) {
+                break;
+            } 
+            else {
+                $output .= " " . $words[$i];
+                ++$i;
+            }
+        }
+        $output .= $end;
+    } 
+    else {
+        $output = $text;
+    }
+    return $output;
+}
+// End Trim String
+
+// Add Issue Taxonomy
+// Register Taxonomy Issue
+function create_issue_tax() {
+
+	$labels = array(
+		'name'              => _x( 'Issues', 'taxonomy general name', 'crimson' ),
+		'singular_name'     => _x( 'Issue', 'taxonomy singular name', 'crimson' ),
+		'search_items'      => __( 'Search Issues', 'crimson' ),
+		'all_items'         => __( 'All Issues', 'crimson' ),
+		'parent_item'       => __( 'Parent Issue', 'crimson' ),
+		'parent_item_colon' => __( 'Parent Issue:', 'crimson' ),
+		'edit_item'         => __( 'Edit Issue', 'crimson' ),
+		'update_item'       => __( 'Update Issue', 'crimson' ),
+		'add_new_item'      => __( 'Add New Issue', 'crimson' ),
+		'new_item_name'     => __( 'New Issue Name', 'crimson' ),
+		'menu_name'         => __( 'Issue', 'crimson' ),
+	);
+	$args = array(
+		'labels' => $labels,
+		'description' => __( '', 'crimson' ),
+		'hierarchical' => false,
+		'public' => true,
+		'publicly_queryable' => true,
+		'show_ui' => true,
+		'show_in_menu' => false,
+		'show_in_nav_menus' => false,
+		'show_tagcloud' => false,
+		'show_in_quick_edit' => true,
+		'show_admin_column' => true,
+		'show_in_rest' => true,
+		'rewrite' => false,
+	);
+	register_taxonomy( 'issue', array('post', 'column'), $args );
+
+}
+add_action( 'init', 'create_issue_tax' );
+// End Add Issue Taxonomy
