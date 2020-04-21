@@ -1,5 +1,13 @@
 jQuery(document).ready(function() {
   jQuery(".article-content > p:last-child").append(" &#x25C6;"); // Add tombstone
+  $('#advanced-search-popup').hide();
+});
+
+$('.advanced-search').click(function(){
+  $('#advanced-search-popup').fadeIn();
+});
+$('#advanced-search-popup .close').click(function(){
+  $('#advanced-search-popup').fadeOut();
 });
 
 /* HEADLINE BALANCER
