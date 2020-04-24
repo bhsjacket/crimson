@@ -55,6 +55,7 @@ if(!empty($display['pattern'])) {
     </div>
     <script>
     $(document).ready(function(){
+        $('.slider-post[data-slide="1"]').attr("data-slide", 6);
         $('.slider-post:first-of-type').addClass('active-slide<?php echo $pattern; ?>');
     });
     var postSlider = new Swiper('.swiper-container', {

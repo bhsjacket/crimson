@@ -10,7 +10,7 @@ $('#advanced-search-popup .close').click(function(){
   $('#advanced-search-popup').fadeOut();
 });
 
-/* HEADLINE BALANCER
+/* HEADLINE BALANCER */ /*
 jQuery(document).ready(function() {
   waitForWebfonts(['Noe Display'], function() {
     textBalancer.initialize('.balance-text, h1, h2, h3, .headline, a h1, a h2, a h3'); // Start balancer.js

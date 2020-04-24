@@ -25,13 +25,15 @@
                 $currentTime = time();
                 ?>
                 <?php if( $data->cod !== 429) { ?>
-                <p class="date"><?php echo date('F j, Y'); ?> - <?php echo round($data->main->feels_like); ?>°F</p>
+                <p class="date"><?php echo date('F j, Y'); ?> - Feels Like <?php echo round($data->main->feels_like); ?>°F</p>
                 <?php } ?>
             </div>
             <div class="masthead-center">
-                <a href="/">
-                    <img class="logo" src="<?php echo get_template_directory_uri(); ?>/images/logo-light.svg">
-                </a>
+                <div class="logo-outer">
+                    <a href="/">
+                        <img class="logo" src="<?php echo get_template_directory_uri(); ?>/images/logo-light.svg">
+                    </a>
+                </div>
             </div>
             <div class="masthead-right">
                 <a class="button outline light" href="/subscribe">Subscribe</a>

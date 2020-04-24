@@ -216,9 +216,8 @@ function modify_user_contact_methods( $user_contact ) {
 }
 add_filter( 'user_contactmethods', 'modify_user_contact_methods' );
 
-function remove_user_fields()
-{
-    echo '<style>tr.user-url-wrap, tr.user-syntax-highlighting-wrap, tr.user-rich-editing-wrap, tr.user-comment-shortcuts-wrap, tr.user-profile-picture, .user-description-wrap .description, #profile-page h2, #color-picker > div:nth-child(n+5), #screen-meta-links{ display: none; }</style>';
+function remove_user_fields() {
+    echo '<style>tr.user-syntax-highlighting-wrap, tr.user-rich-editing-wrap, tr.user-comment-shortcuts-wrap, tr.user-profile-picture, .user-description-wrap .description, #profile-page h2, #color-picker > div:nth-child(n+5), #screen-meta-links{ display: none; }</style>';
 }
 add_action( 'admin_head-user-edit.php', 'remove_user_fields' );
 add_action( 'admin_head-profile.php',   'remove_user_fields' );
