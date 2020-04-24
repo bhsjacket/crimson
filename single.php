@@ -1,6 +1,6 @@
 <?php $template = get_field('post_template'); ?>
 
-<?php if($template !== 'slideshow' && $template !== 'cover') { ?>
+<?php if($template !== 'slideshow') { ?>
 
 <?php get_header(); ?>
 

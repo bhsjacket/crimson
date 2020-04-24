@@ -598,10 +598,25 @@ a.link:hover,
 
 .author-box {
     display: flex;
-    background-color: #e7e7e7;
-    padding: 15px;
-    border-radius: 3px;
+    border-top: solid 1px #e7e7e7;
+    border-bottom: solid 1px #e7e7e7;
+    padding: 15px 0;
     margin: 15px 0;
+}
+
+.author-box-social ul {
+    list-style: none;
+    padding: 0;
+}
+
+.author-box-social ul li {
+    display: inline;
+}
+
+.author-box-social ul li .more-posts {
+    font-family: 'PT Sans', sans-serif;
+    font-size: 16px;
+    text-decoration: none;
 }
 
 .author-box-avatar-column {
@@ -628,7 +643,7 @@ a.link:hover,
 
 .author-box-avatar {
     width: 100%;
-    border-radius: 3px;
+    border-radius: 100%;
 }
 
 .author-box-avatar img {
@@ -636,7 +651,7 @@ a.link:hover,
 }
 
 .author-box-avatar-column {
-    padding-right: 5px;
+    padding-right: 10px;
 }
 
 .author-box-info-column {
