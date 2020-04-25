@@ -80,10 +80,6 @@ add_editor_style( 'fonts/fonts.css' );
 include ('php/shortcodes/shortcode-functions.php');
 // End Include Shortcodes
 
-// Include Delayed Email
-include ('wp-delayed-mail.php');
-// End Include Delayed Email
-
 // Disable Gutenberg
 add_filter('use_block_editor_for_post', '__return_false', 10);
 // End Disable Gutenberg
@@ -340,7 +336,7 @@ function create_issue_tax() {
 		'public' => true,
 		'publicly_queryable' => true,
 		'show_ui' => true,
-		'show_in_menu' => false,
+		'show_in_menu' => true,
 		'show_in_nav_menus' => false,
 		'show_tagcloud' => false,
 		'show_in_quick_edit' => true,
@@ -353,3 +349,62 @@ function create_issue_tax() {
 }
 add_action( 'init', 'create_issue_tax' );
 // End Add Issue Taxonomy
+
+// Add Crossword Post Type
+// Register Custom Post Type
+function crimson_crossword() {
+
+	$labels = array(
+		'name'                  => _x( 'Crosswords', 'Post Type General Name', 'crimson' ),
+		'singular_name'         => _x( 'Crossword', 'Post Type Singular Name', 'crimson' ),
+		'menu_name'             => __( 'Crosswords', 'crimson' ),
+		'name_admin_bar'        => __( 'Crossword', 'crimson' ),
+		'archives'              => __( 'Crossword Archives', 'crimson' ),
+		'attributes'            => __( 'Crossword Attributes', 'crimson' ),
+		'parent_item_colon'     => __( 'Parent Crossword:', 'crimson' ),
+		'all_items'             => __( 'All Crossword', 'crimson' ),
+		'add_new_item'          => __( 'Add New Crossword', 'crimson' ),
+		'add_new'               => __( 'Add New', 'crimson' ),
+		'new_item'              => __( 'New Crossword', 'crimson' ),
+		'edit_item'             => __( 'Edit Crossword', 'crimson' ),
+		'update_item'           => __( 'Update Crossword', 'crimson' ),
+		'view_item'             => __( 'View Crossword', 'crimson' ),
+		'view_items'            => __( 'View Crosswords', 'crimson' ),
+		'search_items'          => __( 'Search Crossword', 'crimson' ),
+		'not_found'             => __( 'No crosswords found', 'crimson' ),
+		'not_found_in_trash'    => __( 'No crosswords in Trash', 'crimson' ),
+		'featured_image'        => __( 'Featured Image', 'crimson' ),
+		'set_featured_image'    => __( 'Set featured image', 'crimson' ),
+		'remove_featured_image' => __( 'Remove featured image', 'crimson' ),
+		'use_featured_image'    => __( 'Use as featured image', 'crimson' ),
+		'insert_into_item'      => __( 'Insert into crossword', 'crimson' ),
+		'uploaded_to_this_item' => __( 'Uploaded to this crossword', 'crimson' ),
+		'items_list'            => __( 'Crossword list', 'crimson' ),
+		'items_list_navigation' => __( 'Crossword list navigation', 'crimson' ),
+		'filter_items_list'     => __( 'Filter crossword list', 'crimson' ),
+	);
+	$args = array(
+		'label'                 => __( 'Crossword', 'crimson' ),
+		'description'           => __( 'Crosswords', 'crimson' ),
+		'labels'                => $labels,
+		'supports'              => array( 'title', 'custom-fields' ),
+		'taxonomies'            => array( 'issue' ),
+		'hierarchical'          => false,
+		'public'                => true,
+		'show_ui'               => true,
+		'show_in_menu'          => true,
+		'menu_position'         => 10,
+		'menu_icon'             => 'dashicons-grid-view',
+		'show_in_admin_bar'     => true,
+		'show_in_nav_menus'     => false,
+		'can_export'            => true,
+		'has_archive'           => true,
+		'exclude_from_search'   => false,
+		'publicly_queryable'    => true,
+		'capability_type'       => 'post',
+	);
+	register_post_type( 'crossword', $args );
+
+}
+add_action( 'init', 'crimson_crossword', 0 );
+// End Add Crossword Post Type
