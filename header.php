@@ -67,3 +67,5 @@
         </section>
     </div>
 </header>
+
+<?php get_template_part('php/posts/universal/sticky'); ?>

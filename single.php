@@ -17,7 +17,6 @@
 <?php get_template_part('php/posts/universal/content'); ?>
 
 <?php get_template_part('php/posts/universal/comments'); ?>
-<?php get_template_part('php/posts/universal/footer'); ?>
 
 <?php get_footer(); ?>
 

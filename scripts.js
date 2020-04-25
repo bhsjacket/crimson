@@ -1,14 +1,46 @@
 jQuery(document).ready(function() {
-  jQuery(".article-content > p:last-child").append(" &#x25C6;"); // Add tombstone
-  $('#advanced-search-popup').hide();
+  jQuery(".article-content > p:last-child").append(" &#x25C6;"); // Add Tombstone
+  $('#advanced-search-popup').hide(); // Advanced Search
+  mediumZoom('.article-content img'); // Image Zoom
+  mediumZoom('.featured-image > img'); // Image Zoom
 });
 
+// Advanced Search
 $('.advanced-search').click(function(){
   $('#advanced-search-popup').fadeIn();
 });
 $('#advanced-search-popup .close').click(function(){
   $('#advanced-search-popup').fadeOut();
 });
+// End Advanced Search
+
+// Donation
+function reminderForm() {
+  $('.donation .donation-before').fadeOut('fast', function(){
+    $('.donation .donation-after').fadeIn('fast');
+  });
+};
+function closeReminderForm() {
+  $('.donation .donation-after').fadeOut('fast', function(){
+    $('.donation .donation-before').fadeIn('fast');
+  });
+};
+$('.donation .donation-after').hide();
+// End Donation
+
+// Sticky Article Header
+$(document).scroll(function(){
+  if($(document).scrollTop() > 400) {
+    $('.article-sticky').fadeIn();
+  };
+  if($(document).scrollTop() < 400) {
+    $('.article-sticky').fadeOut();
+  };
+  if($(document).scrollTop() < 120) {
+    $('.article-sticky').hide();
+  };
+});
+// End Sticky Article Header
 
 /* HEADLINE BALANCER */ /*
 jQuery(document).ready(function() {

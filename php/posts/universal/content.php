@@ -36,6 +36,8 @@
     <?php the_content(); ?>
 </main>
 
+<?php get_template_part('php/posts/universal/donation'); ?>
+
 <div class="author-boxes">
 <?php foreach( get_coauthors() as $coauthor ) { ?>
 
@@ -52,7 +54,7 @@
                     <li><?php if(!empty(get_the_author_meta( 'twitter' ))) { ?><a href="https://twitter.com/<?php echo get_the_author_meta( 'twitter' ); ?>"><i class="fab fa-twitter"></i></a><?php } ?></li>
                     <li><?php if(!empty(get_the_author_meta( 'instagram' ))) { ?><a href="https://instagram.com/<?php echo get_the_author_meta( 'instagram' ); ?>"><i class="fab fa-instagram"></i></a><?php } ?></li>
                     <li><?php if(!empty(get_the_author_meta( 'facebook' ))) { ?><a href="<?php echo get_the_author_meta( 'facebook' ); ?>"><i class="fab fa-facebook"></i></a><?php } ?></li>
-                    <li><?php if(!empty($coauthor->user_email)) { ?><a href="mailto:<?php echo $author->user_email; ?>"><i class="fas fa-envelope"></i></a><?php } ?></li>
+                    <li><?php if(!empty($coauthor->user_email)) { ?><a href="mailto:<?php echo $coauthor->user_email; ?>"><i class="fas fa-envelope"></i></a><?php } ?></li>
                     <li><a class="more-posts" href="<?php echo get_author_posts_url($coauthor->ID); ?>">All posts →</a></li>
                 </ul>
             </div>

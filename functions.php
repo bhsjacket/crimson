@@ -54,6 +54,12 @@ function alx_thumbnail_upscale( $default, $orig_w, $orig_h, $new_w, $new_h, $cro
 add_filter( 'image_resize_dimensions', 'alx_thumbnail_upscale', 10, 6 );
 // End Upscale Cropping
 
+// Co-Authors Plus Capabilities
+function cap_callback() {
+    return 'read';
+}
+add_filter('coauthors_edit_author_cap', 'cap_callback');
+// End Co-Authors Plus Capabilities
 
 // Add Image Sizes
 add_image_size( 'three-two', 1200, 800, true ); // 3:2 ratio
@@ -73,6 +79,10 @@ add_editor_style( 'fonts/fonts.css' );
 // Include Shortcodes
 include ('php/shortcodes/shortcode-functions.php');
 // End Include Shortcodes
+
+// Include Delayed Email
+include ('wp-delayed-mail.php');
+// End Include Delayed Email
 
 // Disable Gutenberg
 add_filter('use_block_editor_for_post', '__return_false', 10);
