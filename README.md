@@ -1,4 +1,4 @@
-# Crimson
+# Crimson (crimsonjump variant)
 Copyright Jerome Paulos, All Rights Reserved.
 
 This theme, in whole or part, may not be used outside of the Berkeley High Jacket without the express permission of Jerome Paulos.
