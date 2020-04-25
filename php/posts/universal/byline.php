@@ -5,6 +5,6 @@
         <?php endforeach ?>
     </div>
     <div style="display: inline-block;">
-        <span class="byline-authors">By <?php coauthors_posts_links(); ?><span class="byline-in"> in</span> <a href="<?php echo esc_url(get_category_link( get_the_category()[0]->term_id )); ?>"><?php echo esc_html( get_the_category()[0]->name ); ?></a></span>
+        <span class="byline-authors">By <?php if(empty(get_field('custom_byline'))) { coauthors_posts_links(); } else { echo get_field('custom_byline'); }; ?><span class="byline-in"> in</span> <a href="<?php echo esc_url(get_category_link( get_the_category()[0]->term_id )); ?>"><?php echo esc_html( get_the_category()[0]->name ); ?></a></span>
     </div>
 </div>

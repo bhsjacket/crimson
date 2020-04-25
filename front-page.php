@@ -3,106 +3,109 @@
 <?php get_template_part('php/front-page/big-header'); ?>
 <?php } ?>
 
-<?php
-/**
- * SLIDER ---------------
- * category - category slug
- * offset - number
- * background-color - HEX color value
- * text-color - HEX color value
- * pattern - CSS class from styles.css, background pattern section
- * posts-position - bottom/top
- * full-width - true/false
- * image-size - preset size, optional
- * 
- * TOP STORY ------------
- * front-feature - true/false, overrides category
- * category - category slug
- * offset - number
- * background-color - HEX color value
- * text-color - HEX color value
- * pattern - CSS class from styles.css, background pattern section
- * image-position - right/left
- * align - top/bottom
- * 
- * FIVE POST GRID -------
- * category - category slug
- * offset - number
- * posts - number, multiple of 5 recommended
- * 
- * TITLE ----------------
- * title - string
- * url - URL
- * icon - fontawesome icon class
- * icon-color: HEX color value
- * text-color: HEX color value
- */
-?>
-
 <main id="front-page">
-<?php
-set_query_var('display-info', array(
-    'front-feature' => true,
-    'category' => 'city', // category slug (required)
-    'offset' => 0, // number (optional)
-    'background-color' => '#800000', // HEX color value (required)
-    'text-color' => '#FFFFFF', // HEX color value (required)
-    'pattern' => 'sports-dark animated_xy', // plus, plus-dark, squiggle, squiggle-dark, tic-tac-toe, tic-tac-toe-dark, rain, rain-dark, shapes, shapes-dark, texture, texture-dark, food, food-dark, magnet, magnet-dark, squares, squares-dark (optional)
-    'image-position' => 'right', // left, right (required)
-    'align' => 'bottom' // top, bottom (required)
-));
-get_template_part('php/front-page/top-story');
-?>
 
 <?php
-get_template_part('php/front-page/columnists');
+if( have_rows('modules', 'option') ):
+    while( have_rows('modules', 'option') ): the_row();
+
+        if( get_row_layout() == 'top_story' ): // Top Story
+            if(get_sub_field('content') == 'front-feature') {
+                $front_feature = true;
+                $category = 'news';
+            } else { if(get_sub_field('content') == 'category') {
+                $front_feature = false;
+                $category = get_sub_field('category')->slug;
+            }}
+            if(!empty(get_sub_field('pattern'))) {
+                if(get_sub_field('pattern_color') == 'light') {
+                    $pattern = get_sub_field('pattern') . ' animated_' . get_sub_field('animated');
+                } else {
+                    $pattern = get_sub_field('pattern') . '-dark animated_' . get_sub_field('animated');
+                }
+            } else {
+                $pattern = 'no-pattern';
+            }
+            set_query_var('display-info', array(
+                'front-feature' => $front_feature,
+                'category' => $category,
+                'offset' => get_sub_field('offset'),
+                'background-color' => get_sub_field('background_color'),
+                'text-color' => get_sub_field('text_color'),
+                'pattern' => $pattern,
+                'image-position' => get_sub_field('image_position'),
+                'align' => get_sub_field('align')
+            ));
+            get_template_part('php/front-page/top-story');
+
+        elseif(get_row_layout() == 'slider'): // Slider
+            if(!empty(get_sub_field('pattern'))) {
+                if(get_sub_field('pattern_color') == 'light') {
+                    $pattern = get_sub_field('pattern');
+                } else {
+                    $pattern = get_sub_field('pattern') . '-dark';
+                }
+            } else {
+                $pattern = 'no-pattern';
+            }
+            set_query_var('display-info', array(
+                'category' => get_sub_field('category')->slug, // category slug (required)
+                'offset' => get_sub_field('offset'), // number (optional)
+                'background-color' => get_sub_field('background_color'), // HEX color value (required)
+                'text-color' => get_sub_field('text_color'), // HEX color value (required)
+                'pattern' => $pattern,
+                'posts-position' => 'bottom', // top, bottom (required)
+                'full-width' => get_sub_field('full_width'),
+                'image-size' => get_sub_field('image_size'),
+            ));
+            get_template_part('php/front-page/slider');
+        
+        elseif(get_row_layout() == 'five'): // Five Post Grid
+            set_query_var('display-info', array(
+                'category' => get_sub_field('category')->slug,
+                'offset' => get_sub_field('offset'),
+                'posts' => get_sub_field('posts')
+            ));
+            get_template_part('php/front-page/five');
+
+        elseif(get_row_layout() == 'columnists'):
+            get_template_part('php/front-page/columnists');
+
+        elseif(get_row_layout() == 'title'): // Title
+            set_query_var('display-info', array(
+                'title' => get_sub_field('title'),
+                'url' => get_sub_field('title'),
+                'icon' => get_sub_field('icon'),
+                'icon-color' => get_sub_field('icon_color'),
+                'text-color' => get_sub_field('text_color')
+            ));
+            get_template_part('php/front-page/title');
+
+        elseif(get_row_layout() == 'shattered'): // Shattered/Three-Six Grid
+            if(!empty(get_sub_field('pattern'))) {
+                if(get_sub_field('pattern_color') == 'light') {
+                    $pattern = get_sub_field('pattern');
+                } else {
+                    $pattern = get_sub_field('pattern') . '-dark';
+                }
+            } else {
+                $pattern = 'no-pattern';
+            }
+            set_query_var('display-info', array(
+                'category' => get_sub_field('category')->slug,
+                'offset' => get_sub_field('offset'),
+                'background-color' => get_sub_field('background_color'),
+                'text-color' => get_sub_field('text_color'),
+                'pattern' => $pattern,
+            ));
+            get_template_part('php/front-page/shattered');
+
+        endif;
+    endwhile;
+endif;
+
 ?>
 
-<?php
-set_query_var('display-info', array(
-    'category' => 'news', // category slug (required)
-    'offset' => 0, // number (optional)
-    'background-color' => '#800000', // HEX color value (required)
-    'text-color' => '#FFFFFF', // HEX color value (required)
-    'pattern' => 'plus', // plus, plus-dark, squiggle, squiggle-dark, tic-tac-toe, tic-tac-toe-dark, rain, rain-dark, shapes, shapes-dark, texture, texture-dark, food, food-dark, magnet, magnet-dark, squares, squares-dark (optional)
-    'posts-position' => 'bottom', // top, bottom (required)
-    'full-width' => false,
-    'image-size' => 'six-three',
-));
-get_template_part('php/front-page/slider');
-?>
-
-<?php
-set_query_var('display-info', array(
-    'category' => 'opinion', // category slug
-    'offset' => 1, // number
-    'posts' => 5 // number, multiple of 5
-));
-get_template_part('php/front-page/five');
-?>
-<?php
-set_query_var('display-info', array(
-    'title' => 'Opinion', // category slug
-    'url' => '/category/opinion', // number
-    'icon' => 'far fa-comments', // number, multiple of 5
-    'icon-color' => '#800000',
-    'text-color' => '#000000'
-));
-get_template_part('php/front-page/title');
-?>
-<?php
-set_query_var('display-info', array(
-    'front-feature' => false,
-    'category' => 'opinion', // category slug (required)
-    'offset' => 0, // number (optional)
-    'background-color' => '#000000', // HEX color value (required)
-    'text-color' => '#FFFFFF', // HEX color value (required)
-    'pattern' => 'comment-bubble animated_xy', // plus, plus-dark, squiggle, squiggle-dark, tic-tac-toe, tic-tac-toe-dark, rain, rain-dark, shapes, shapes-dark, texture, texture-dark, food, food-dark, magnet, magnet-dark, squares, squares-dark (optional)
-    'image-position' => 'left', // left, right (required)
-    'align' => 'top' // top, bottom (required)
-));
-get_template_part('php/front-page/top-story');
-?>
 </main>
 
 <?php get_footer(); ?>

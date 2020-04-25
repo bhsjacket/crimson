@@ -38,43 +38,6 @@
     <link href="<?php echo get_template_directory_uri(); ?>/css/page.css">
 <?php }} ?>
 
-<?php if( get_post_type() == 'crossword') { ?>
-    <script src="<?php echo get_template_directory_uri(); ?>/includes/crossword/crossword.js"></script>
-    <link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/includes/crossword/crossword.css">
-    <script>
-        (function($) {
-            $(function() {
-                var puzzleData = [
-                        <?php foreach(get_field('across') as $across) { ?>
-                        {
-                            clue: "<?php echo $across['clue']; ?>",
-                            answer: "<?php echo $across['answer']; ?>",
-                            position: <?php echo $across['number']; ?>,
-                            orientation: "across",
-                            startx: <?php echo $across['startx']; ?>,
-                            starty: <?php echo $across['starty']; ?>,
-                        },
-                        <?php } ?>
-                        <?php foreach(get_field('down') as $down) { ?>
-                        {
-                            clue: "<?php echo $down['clue']; ?>",
-                            answer: "<?php echo $down['answer']; ?>",
-                            position: <?php echo $down['number']; ?>,
-                            orientation: "down",
-                            startx: <?php echo $down['startx']; ?>,
-                            starty: <?php echo $down['starty']; ?>,
-                        },
-                        <?php } ?>
-                    ]
-            
-                $('#puzzle-wrapper').crossword(puzzleData);
-                
-            })
-            
-        })(jQuery)
-    </script>
-<?php } ?>
-
 <!-- Begin wp_head() -->
 <?php wp_head(); ?>
 <!-- End wp_head() -->

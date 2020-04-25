@@ -28,6 +28,15 @@
     font-style: normal;
 }
 
+/* SOUL */
+
+@font-face {
+  font-family: 'Soul';
+  src: url('Soul.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}
+
 /* PT SANS AND PT SERIF */
 
 /* cyrillic-ext */

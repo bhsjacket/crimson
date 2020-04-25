@@ -515,3 +515,108 @@
     text-decoration: none;
 }
 /* END TITLE */
+
+/* SHATTERED */
+.shattered {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    grid-column-gap: 30px;
+    grid-row-gap: 30px;
+}
+.shattered > * {
+    background-color: #E7E7E7;
+    text-decoration: none;
+}
+.shattered img {
+    width: 100%;
+}
+.shattered .shattered-featured-image:first-child {
+    grid-area: 1 / 1 / 4 / 2;
+}
+.shattered .shattered-featured-image:nth-child(2) {
+    grid-area: 1 / 2 / 4 / 3;
+}
+.shattered .shattered-featured-image:nth-child(3) {
+    grid-area: 1 / 3 / 4 / 4;
+}
+
+.shattered .shattered-post:first-child {
+    grid-area: 1 / 4 / 2 / 5;
+}
+.shattered .shattered-post:nth-child(2) {
+    grid-area: 2 / 4 / 3 / 5;
+}
+.shattered .shattered-post:nth-child(3) {
+    grid-area: 3 / 4 / 4 / 5;
+}
+.shattered .shattered-post:nth-child(4) {
+    grid-area: 1 / 5 / 2 / 6;
+}
+.shattered .shattered-post:nth-child(5) {
+    grid-area: 2 / 5 / 3 / 6;
+}
+.shattered .shattered-post:nth-child(6) {
+    grid-area: 3 / 5 / 4 / 6;
+}
+
+.shattered .shattered-featured-image-info,
+.shattered .shattered-post {
+    padding: 15px;
+}
+
+.shattered .shattered-featured-image {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.shattered .shattered-featured-image-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+}
+
+.shattered h2 {
+    margin: 0;
+    color: black;
+    font-family: 'Noe Display', serif;
+    font-weight: normal;
+}
+
+.shattered .shattered-post h2 {
+    font-size: 20px;
+    font-family: 'Noe Display', serif;
+}
+
+.shattered .shattered-byline {
+    font-family: 'PT Sans', sans-serif;
+    color: black;
+}
+
+@media all and (orientation: portrait) {
+    .shattered {
+        display: block;
+    }
+    .shattered .shattered-featured-image {
+        height: auto;
+        flex-direction: row;
+        margin-bottom: 15px;
+    }
+    .shattered .shattered-featured-image-info {
+        width: 70%;
+    }
+    .shattered .shattered-featured-image img {
+        width: 30%;
+        height: auto;
+        object-fit: cover;
+    }
+    .shattered .shattered-post {
+        display: none;
+    }
+    .shattered .shattered-featured-image-info h2 {
+        margin-bottom: 15px;
+    }
+}
+/* END SHATTERED */
