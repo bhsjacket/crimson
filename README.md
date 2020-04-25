@@ -1,7 +1,7 @@
 # Crimson
 Copyright Jerome Paulos, All Rights Reserved.
 
-This theme, nor any part, may not be used outside of the Berkeley High Jacket without the express permission of Jerome Paulos. (Except the otherwise liscenced libraries.)
+This theme, in whole or part, may not be used outside of the Berkeley High Jacket without the express permission of Jerome Paulos.
 
 It may be used within the Jacket for free and forever.
 
