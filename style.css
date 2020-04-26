@@ -552,7 +552,12 @@ a.link:hover,
 }
 
 /* Content */
-.article-content > p {
+.article-content > *:not(.image-in-post):not(h1),
+#page > *:not(.image-in-post):not(h1),
+.article-content ol,
+.article-content ul,
+.article-content > p,
+#page > p {
     max-width: 600px;
     margin: 0 auto;
     padding: 15px;
@@ -560,6 +565,7 @@ a.link:hover,
     font-size: 17px;
     line-height: 1.5em;
 }
+
 .article-content .post-date {
     font-weight: normal;
     font-family: 'Noe Display', serif;

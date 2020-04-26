@@ -1,25 +1,18 @@
 <?php
-$vimeo_id = (int) substr(parse_url({{url}}, PHP_URL_PATH), 1);
-
-/**
- * {{caption}} is a textarea field
- * {{source}} is a text field
- * {{url}} is a vimeo url
- */
-
+$vimeo_id = (int) substr(parse_url($url, PHP_URL_PATH), 1);
 ?>
 
 <div class="featured-video">
     <div class='embed-container'>
-        <iframe src='https://player.vimeo.com/video/<?php echo $vimeo_id ?>' frameborder='0' webkitAllowFullScreen mozallowfullscreen allowFullScreen>
+        <iframe src='https://player.vimeo.com/video/<?php echo $vimeo_id;?>' frameborder='0' webkitAllowFullScreen mozallowfullscreen allowFullScreen>
         </iframe>
     </div>
     <div class="caption-group">
         <div class="caption column">
-            <p><{{caption}}</p>
+            <p><?php echo $caption; ?></p>
         </div>
         <div class="photographer column">
-            <p>{{source}}</p>
+            <p><?php echo $source; ?></p>
         </div>
     </div>
 </div>

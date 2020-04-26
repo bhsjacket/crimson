@@ -2,6 +2,7 @@ jQuery(document).ready(function() {
   jQuery(".article-content > p:last-child").append(" &#x25C6;"); // Add Tombstone
   $('#advanced-search-popup').hide(); // Advanced Search
   mediumZoom('.article-content img'); // Image Zoom
+  mediumZoom('#page img'); // Image Zoom
   mediumZoom('.featured-image > img'); // Image Zoom
 });
 

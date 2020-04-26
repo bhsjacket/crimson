@@ -44,7 +44,7 @@ endif;
 
 <div class="search-result<?php if(get_post_type() == 'page') { echo ' page-result '; }; ?><?php if(has_post_thumbnail() == false &&  get_post_type() !== 'column') { echo ' no-image '; }; ?><?php if(get_post_type() == 'column') { echo ' column-image '; }; ?><?php if(get_the_terms($post->ID, 'syndication')[0]->slug == 'front-feature') { echo ' front-feature plus animated_xy'; }; ?>">
     <?php if(get_post_type() !== 'page') { ?>
-    <p class="search-result-date"><?php echo get_the_date(); ?></p>
+    <p class="search-result-date"><?php echo get_the_date('F j, Y'); ?></p>
     <?php } ?>
     <div class="search-result-article">
         <h2 class="search-result-article-title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
