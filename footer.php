@@ -59,7 +59,7 @@
                 <li class="footer-link"><a href="/about/staff">Staff</a></li>
                 <li class="footer-link"><a href="/about/staff/apply">Jobs</a></li>
                 <li class="footer-link"><a href="/about/contact">Contact</a></li>
-                <li class="footer-link"><a href="/advertise">Advertise</a></li>
+                <li class="footer-link"><a href="mailto:business@bhsjacket.com">Advertise</a></li>
                 <li class="footer-link"><a href="/login">Login</a></li>
             </ul>
         </div>
