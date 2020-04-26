@@ -28,7 +28,9 @@ function init_actions() {
 
     add_theme_support( 'editor-styles' );
     add_editor_style( 'css/editor.css' );
-    add_editor_style( 'fonts/fonts.css' );
+	add_editor_style( 'fonts/fonts.css' );
+	
+	add_theme_support( 'automatic-feed-links' ); // RSS Feeds
 
     add_image_size( 'three-two', 1200, 800, true ); // 3:2 ratio
     add_image_size( 'six-three', 1200, 600, true ); // 6:3 ratio
