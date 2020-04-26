@@ -21,7 +21,8 @@
 <style>
     .byline-in,
     .byline .avatars,
-    .byline-by {
+    .byline-by,
+    .byline-in + a {
         display: none;
     }
     #article-header img {
