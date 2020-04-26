@@ -1,9 +1,7 @@
 <?php get_header(); ?>
 
 <header id="article-header">
-    <?php foreach( get_coauthors() as $coauthor ): ?>
-    <img src="<?php echo get_avatar_url( $coauthor->ID ); ?>">
-    <?php endforeach ?>
+    <img src="<?php echo get_avatar_url( get_coauthors()[0]->ID ); ?>">
     <?php if( $template == 'massive' ) { ?>
         <?php get_template_part('php/posts/massive/featured-image'); ?>
     <?php } ?>
