@@ -31,7 +31,7 @@
             <div class="masthead-center">
                 <div class="logo-outer">
                     <a href="/">
-                        <img class="logo" src="<?php echo get_template_directory_uri(); ?>/images/logo-light.svg">
+                        <img class="logo" src="<?php echo get_template_directory_uri(); ?>/images/masthead-light.svg">
                     </a>
                 </div>
             </div>

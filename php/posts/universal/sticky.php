@@ -1,4 +1,4 @@
-<?php if(get_post_type() == 'column' || get_post_type() == 'post') { ?>
+<?php if(is_singular(array('column', 'post'))) { ?>
 <div class="article-sticky">
     <div class="article-sticky-inner">
         <div class="article-sticky-left">

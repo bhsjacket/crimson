@@ -1,6 +1,6 @@
 <footer id="footer">
     <div class="footer-top">
-        <a href="/#"><img src="<?php echo get_template_directory_uri(); ?>/images/logo-light.svg"></a>
+        <a href="/#"><img src="<?php echo get_template_directory_uri(); ?>/images/masthead-light.svg"></a>
     </div>
     <div class="footer-inner">
         <div class="footer-column">

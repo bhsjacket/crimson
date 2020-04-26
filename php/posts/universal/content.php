@@ -38,7 +38,7 @@
 
 <?php get_template_part('php/posts/universal/donation'); ?>
 
-<div class="author-boxes">
+<div class="author-boxes" id="authors">
 <?php foreach( get_coauthors() as $coauthor ) { ?>
 
 <div class="author-box-outer">
