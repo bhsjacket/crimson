@@ -28,7 +28,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.1/css/swiper.min.css">
 <?php } ?>
 
-<?php if( get_post_type() == 'post' || get_post_type() == 'page' && !is_front_page()) { ?>
+<?php if( get_post_type() == 'post' && !is_front_page() || get_post_type() == 'page' ) { ?>
     <link href="<?php echo get_template_directory_uri(); ?>/css/posts/<?php echo get_field('post_template') ?>.css" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.1/js/swiper.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.1/css/swiper.min.css">
