@@ -8,7 +8,7 @@
 <div class="post-meta">
     <?php get_template_part('php/posts/universal/byline'); ?>
     <div class="sharing">
-        <p class="post-date"><?php echo get_the_date(); ?></p>
+        <p class="post-date"><?php echo get_the_date('F j, Y'); ?></p>
         <?php /**
         <a title="Share on Facebook" href="https://www.facebook.com/sharer/sharer.php?u=<?php echo get_permalink(); ?>"><i class="fab fa-facebook"></i></a>
         <a title="Share on Twitter" href="https://twitter.com/intent/tweet?url=<?php echo get_permalink(); ?>"><i class="fab fa-twitter"></i></a>

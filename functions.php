@@ -322,3 +322,15 @@ function create_issue_tax() {
 }
 add_action( 'init', 'create_issue_tax' );
 // End Add Issue Taxonomy
+
+// Add Admin CSS
+add_action('admin_head', 'crimson_admin_css');
+
+function crimson_admin_css() {
+  echo '<style>
+		[data-slug="admin-menu-editor-pro"] + .plugin-update-tr {
+			display: none;
+		}
+  </style>';
+}
+// End Add Admin CSS
