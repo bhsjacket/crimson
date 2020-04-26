@@ -1,7 +1,7 @@
 <?php get_header(); ?>
 
 <header id="article-header">
-    <img src="<?php echo get_avatar_url( get_coauthors()[0]->ID ); ?>">
+	<img src="<?php echo get_avatar_url( get_coauthors()[0]->ID ); ?>">
     <?php if( $template == 'massive' ) { ?>
         <?php get_template_part('php/posts/massive/featured-image'); ?>
     <?php } ?>
@@ -22,7 +22,8 @@
     .byline-in,
     .byline .avatars,
     .byline-by,
-    .byline-in + a {
+	.byline-in + a,
+	.sharing {
         display: none;
     }
     #article-header img {
@@ -36,17 +37,10 @@
     #article-header {
         margin-top: 30px;
     }
-    .post-meta .byline,
-    .post-meta .sharing {
-        width: 50%!important;
-        display: block!important;
-    }
-    .post-meta .byline {
-        text-align: right!important;
-        padding-right: 10px!important;
-    }
-    .post-meta .sharing {
-        text-align: left!important;
-        padding-left: 10px!important;
-    }
+	.post-meta {
+		text-align: center;
+	}
+	.byline {
+		width: 100%!important;
+	}
 </style>
