@@ -15,7 +15,7 @@ $query = new WP_Query( $args ); ?>
 
     <a href="<?php echo get_permalink(); ?>">
         <div class="columnist-post <?php if(!empty(get_field('homepage_quote'))) { echo 'column-quote'; }; ?>">
-            <img src="<?php echo get_avatar_url( get_coauthors()[0]->ID ); ?>">
+            <img src="<?php echo get_avatar_url(get_coauthors()[0]->ID, array('size' => 150)); ?>">
             <?php if(empty(get_field('homepage_quote'))) { ?>
             <span><?php echo get_coauthors()[0]->display_name; ?></span>
             <?php } ?>
