@@ -34,7 +34,7 @@ $query = new WP_Query( $args ); ?>
             } else {
                 $string_length = 200;
             } ?>
-            <p><?php if(!empty(get_field('homepage_excerpt'))) { echo get_field('homepage_excerpt'); } else { echo trimstring(wp_trim_excerpt(), $string_length); } ?></p>
+            <p><?php if(!empty(get_field('homepage_excerpt'))) { echo get_field('homepage_excerpt'); } else { echo wp_trim_excerpt(); } ?></p>
         </div>
     </a>
     

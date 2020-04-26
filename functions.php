@@ -21,9 +21,20 @@
 
 <?php
 
-// Featured Image
-add_theme_support( 'post-thumbnails' );
-// End Featured Image
+function init_actions() {
+    add_theme_support( 'post-thumbnails' ); // Featured Image
+
+    add_theme_support( 'title-tag' );
+
+    add_theme_support( 'editor-styles' );
+    add_editor_style( 'css/editor.css' );
+    add_editor_style( 'fonts/fonts.css' );
+
+    add_image_size( 'three-two', 1200, 800, true ); // 3:2 ratio
+    add_image_size( 'six-three', 1200, 600, true ); // 6:3 ratio
+}
+
+add_action( 'after_setup_theme', 'init_actions' );
 
 // Modify Excerpts
 function crimson_excerpt_length( $length ) {
@@ -60,21 +71,6 @@ function cap_callback() {
 }
 add_filter('coauthors_edit_author_cap', 'cap_callback');
 // End Co-Authors Plus Capabilities
-
-// Add Image Sizes
-add_image_size( 'three-two', 1200, 800, true ); // 3:2 ratio
-add_image_size( 'six-three', 1200, 600, true ); // 6:3 ratio
-// End Add Image Sizes
-
-// Title Tag
-add_theme_support( 'title-tag' );
-// End Title Tag
-
-// Editor Styles
-add_theme_support( 'editor-styles' );
-add_editor_style( 'css/editor.css' );
-add_editor_style( 'fonts/fonts.css' );
-// End Editor Styles
 
 // Include Shortcodes
 include ('php/shortcodes/shortcode-functions.php');
@@ -286,31 +282,6 @@ function crimson_columns() {
 }
 add_action( 'init', 'crimson_columns', 0 );
 // End Columns
-
-// Trim String
-function trimstring($text, $maxchar, $end='...') {
-    if (strlen($text) > $maxchar || $text == '') {
-        $words = preg_split('/\s/', $text);      
-        $output = '';
-        $i      = 0;
-        while (1) {
-            $length = strlen($output)+strlen($words[$i]);
-            if ($length > $maxchar) {
-                break;
-            } 
-            else {
-                $output .= " " . $words[$i];
-                ++$i;
-            }
-        }
-        $output .= $end;
-    } 
-    else {
-        $output = $text;
-    }
-    return $output;
-}
-// End Trim String
 
 // Add Issue Taxonomy
 // Register Taxonomy Issue
