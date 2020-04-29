@@ -2,6 +2,8 @@
 
 <body id="<?php print get_stylesheet(); ?>" <?php body_class(); ?>>
 
+<?php get_template_part('php/donation-banner'); ?>
+
 <header id="header">
     <div class="masthead-outer">
         <section id='masthead'>

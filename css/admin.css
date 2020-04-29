@@ -1,0 +1,24 @@
+[data-setting="alt"],
+#alt-text-description,
+[data-setting="title"],
+[data-setting="description"],
+.media-sidebar .compat-field-su_slide_link,
+.media-sidebar .media-types-required-info,
+.media-sidebar .image-display,
+.acf-gallery-side-data .compat-field-su_slide_link,
+.acf-gallery-side-data .media-types-required-info,
+.acf-gallery-side-data .image-display,
+.attachment-info .compat-field-su_slide_link,
+.attachment-info .media-types-required-info,
+.attachment-info .image-display {
+    display: none;
+}
+
+.media-sidebar .acf-field .acf-label label,
+.attachment-info .acf-field .acf-label label {
+    font-weight: normal!important;
+}
+
+.acf-gallery-side-data .image-display {
+    display: table-row;
+}

@@ -38,6 +38,15 @@ function init_actions() {
 
 add_action( 'after_setup_theme', 'init_actions' );
 
+// Admin CSS
+function load_admin_style() {
+	wp_register_style( 'admin_css', get_template_directory_uri() . '/css/admin.css', false, '1.0.0' );
+	wp_enqueue_style( 'admin_css');
+}
+
+add_action( 'admin_enqueue_scripts', 'load_admin_style' );
+// End Admin CSS
+
 // Modify Excerpts
 function crimson_excerpt_length( $length ) {
     return 50;
@@ -50,7 +59,7 @@ add_filter( 'excerpt_more', 'crimson_excerpt_more' );
 // End Modify Excerpts
 
 // Upscale Cropping
-function alx_thumbnail_upscale( $default, $orig_w, $orig_h, $new_w, $new_h, $crop ){
+function crimson_thumbnail_upscale( $default, $orig_w, $orig_h, $new_w, $new_h, $crop ){
     if ( !$crop ) return null; // let the wordpress default function handle this
  
     $aspect_ratio = $orig_w / $orig_h;
@@ -64,7 +73,7 @@ function alx_thumbnail_upscale( $default, $orig_w, $orig_h, $new_w, $new_h, $cro
  
     return array( 0, 0, (int) $s_x, (int) $s_y, (int) $new_w, (int) $new_h, (int) $crop_w, (int) $crop_h );
 }
-add_filter( 'image_resize_dimensions', 'alx_thumbnail_upscale', 10, 6 );
+add_filter( 'image_resize_dimensions', 'crimson_thumbnail_upscale', 10, 6 );
 // End Upscale Cropping
 
 // Co-Authors Plus Capabilities
@@ -79,7 +88,7 @@ include ('php/shortcodes/shortcode-functions.php');
 // End Include Shortcodes
 
 // Disable Gutenberg
-add_filter('use_block_editor_for_post', '__return_false', 10);
+add_filter('use_block_editor_for_post', '__return_false', 10); // Disable Gutenberg
 // End Disable Gutenberg
 
 // Register Menus
@@ -97,81 +106,31 @@ function crimson_menus() {
 add_action( 'init', 'crimson_menus' );
 // End Register Menus
 
-/* Register Custom Gutenberg Blocks
-function register_acf_block_types() {
-
-    // Register Custom Image Block
-    acf_register_block_type(array(
-        'name'              => 'jkt-wider-image',
-        'title'             => __('Wider Image'),
-        'description'       => __('Add a wider image inside your article.'),
-        'render_template'   => 'php/posts/universal/content/wider-image.php',
-        'category'          => 'common',
-        'icon'              => '<svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" role="img" aria-hidden="true" focusable="false"><path d="m19 5v14h-14v-14h14m0-2h-14c-1.1 0-2 0.9-2 2v14c0 1.1 0.9 2 2 2h14c1.1 0 2-0.9 2-2v-14c0-1.1-0.9-2-2-2z"></path><path d="m14.14 11.86l-3 3.87-2.14-2.59-3 3.86h12l-3.86-5.14z"></path></svg>',
-        'keywords'          => array( 'image', 'photo', 'wider', 'wider', 'figure' ),
-        'supports'          => array(
-            'align'         => false
-        ),
-        'align'             => 'full',
-    ));
-    acf_register_block_type(array(
-        'name'              => 'jkt-image',
-        'title'             => __('Image'),
-        'description'       => __('Add an image inside your article.'),
-        'render_template'   => 'php/posts/universal/content/image.php',
-        'category'          => 'common',
-        'icon'              => '<svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" role="img" aria-hidden="true" focusable="false"><path d="m19 5v14h-14v-14h14m0-2h-14c-1.1 0-2 0.9-2 2v14c0 1.1 0.9 2 2 2h14c1.1 0 2-0.9 2-2v-14c0-1.1-0.9-2-2-2z"></path><path d="m14.14 11.86l-3 3.87-2.14-2.59-3 3.86h12l-3.86-5.14z"></path></svg>',
-        'keywords'          => array( 'image', 'photo', 'figure' ),
-        'supports'          => array(
-            'align'         => false
-        ),
-        'align'             => 'full',
-    ));
-}
-
-if( function_exists('acf_register_block_type') ) {
-    add_action('acf/init', 'register_acf_block_types');
-}
-End Register Custom Gutenberg Blocks */
-
-// Hide Unwanted Blocks
-add_filter( 'allowed_block_types', 'misha_keep_plugins_blocks' );
+/* Hide Unwanted Blocks
+add_filter( 'allowed_block_types', 'misha_allowed_block_types' );
  
-function misha_keep_plugins_blocks( $allowed_blocks ) {
+function misha_allowed_block_types( $allowed_blocks ) {
  
-	$registered_blocks = WP_Block_Type_Registry::get_instance()->get_all_registered();
- 
-	unset( $registered_blocks[ 'core/latest-comments' ] );
-	unset( $registered_blocks[ 'core/archives' ] );
-    unset( $registered_blocks[ 'core/calendar' ] );
-    unset( $registered_blocks[ 'core/categories' ] );
-    unset( $registered_blocks[ 'core/rss' ] );
-    unset( $registered_blocks[ 'core/latest-posts' ] );
-    unset( $registered_blocks[ 'core/search' ] );
-    unset( $registered_blocks[ 'core/tag-cloud' ] );
- 
-	$registered_blocks = array_keys( $registered_blocks );
- 
-	return array_merge( array(
+	return array(
 		'core/paragraph',
+		'core/heading',
+		'core/list',
+		'acf/extended-image',
+		'acf/two-images',
 		'core/quote',
-        'core/freeform',
-        'core/separator',
-        'core/shortcode',
-        'core-embed/twitter',
-        'core-embed/youtube',
-        'core-embed/facebook',
-        'core-embed/instagram',
-        'core-embed/soundcloud',
-        'core-embed/spotify',
-        'core-embed/vimeo',
-        'core-embed/reddit',
-        'core-embed/tumblr',
-        'core-embed/youtube',
-	), $registered_blocks );
+		'acf/image-gallery',
+		'core-embed/twitter',
+		'core-embed/facebook',
+		'core-embed/youtube',
+		'core-embed/vimeo',
+		'core-embed/spotify',
+		'core-embed/soundcloud',
+		'core-embed/reddit',
+		'core-embed/instagram'
+	);
  
 }
-// End Hide Unwated Blocks
+*/// End Hide Unwated Blocks
 
 // Register Syndication Taxonomy
 add_action( 'init', 'create_syndication_taxonomy', 0 );

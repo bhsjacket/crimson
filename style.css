@@ -208,6 +208,7 @@ header section {
     border-radius: 3px;
     transition: all 0.2s;
     display: inline-block;
+    cursor: pointer;
 }
 
 .button:hover {
@@ -485,31 +486,57 @@ a.link:hover,
 }
 
 /* Images */
+@media all and (orientation: portrait) {
+    .gallery-post .wide,
+    .gallery-post blockquote {
+        padding: 15px;
+    }
+    .gallery-post blockquote {
+        margin: -60px 0!important;
+    }
+    .gallery-post blockquote,
+    .gallery-post blockquote p {
+        margin: 0;
+    }
+    .gallery-post blockquote:before {
+        position: initial;
+        margin-bottom: -50px;
+    }
+}
+
+.gallery-post > *:first-child.image-in-post {
+    margin-top: 0;
+}
+
+.image-in-post {
+    margin: 30px auto;
+    display: block;
+}
+.image-in-post img {
+    width: 100%;
+}
+
+.two-images {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: 1fr;
+    grid-column-gap: 15px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
 .floated-image.right {
     float: right;
 }
 
-.normal-image,
-.wider-image {
-    padding: 15px;
-    background-color: white;
-}
-
-.normal-image img {
+.normal-image {
     max-width: 600px;
-    display: block;
-    margin: 0 auto;
 }
 
-.wider-image img {
+.wider-image,
+.full-width-image,
+.wide {
     max-width: 800px;
-    margin: 0 auto;
-    display: block;
-}
-
-.full-width-image {
-    max-width: 100%;
-    margin: 0 auto;
 }
 
 @media all and (orientation:portrait) {
@@ -519,11 +546,6 @@ a.link:hover,
     .image-in-post img {
         width: 100%;
     }
-}   
-
-.full-width-image img {
-    width: 100%;
-    display: block;
 }
 
 .caption-group {
@@ -557,8 +579,8 @@ a.link:hover,
 }
 
 /* Content */
-.article-content > *:not(.image-in-post),
-#page > *:not(.image-in-post) {
+.article-content > *:not(.wide),
+#page > *:not(.wide) {
     max-width: 600px;
     margin: 0 auto;
 }
@@ -1733,3 +1755,90 @@ blockquote:before {
     padding-right: 15px;
 }
 /* End End of Article Donation */
+
+/* Donation Banner */
+.donation-banner {
+    height: 75px;
+    background-color: #E7E7E7;
+}
+.donation-banner-inner {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    max-width: 1140px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+.donation-banner-inner .donation-banner-text {
+    width: 60%;
+    display: flex;
+    align-items: center;
+}
+
+.donation-banner-inner .donation-banner-form {
+    display: inline-flex;
+    margin: 0 0 0 auto;
+}
+
+.donation-banner-inner .donation-banner-form button,
+.donation-banner-inner .donation-banner-form input,
+.donation-banner .donation-banner-form select {
+    background-color: #800000;
+    color: white;
+    padding: 10px 15px;
+    font-family: 'PT Sans', sans-serif;
+    font-size: 16px;
+    margin-left: 15px;
+    cursor: pointer;
+    border: none;
+    border-radius: 3px;
+    outline: none;
+}
+
+.donation-banner-inner .donation-banner-form button {
+    background-color: rgb(0, 0 , 0, 0.1);
+    transition: background-color 0.3s;
+}
+
+.donation-banner-inner .donation-banner-form button:hover {
+    background-color: rgb(0, 0 , 0, 0.25);
+    transition: background-color 0.3s;
+}
+
+.donation-banner-inner i {
+    font-size: 48px;
+    padding-right: 15px;
+}
+
+.donation-banner p {
+    font-size: 16px;
+    font-family: 'PT Serif', serif;
+}
+
+.donation-banner .donation-banner-form select {
+    height: 100%;
+}
+
+.donation-thanks {
+    font-family: 'Noe Display', serif;
+    margin: 0 auto;
+    font-weight: normal;
+    font-size: 32px;
+    font-style: italic;
+}
+
+@media all and (orientation: portrait) {
+    .donation-banner p {
+        display: none;
+    }
+    .donation-banner-inner .donation-banner-text {
+        width: initial;
+    }
+}
+
+.donation-closed,
+.donation-completed {
+    display: none;
+}
+/* End of Donation Banner */
