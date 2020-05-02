@@ -4,23 +4,20 @@
 
 <div class="mobile-menu-outer">
     <div class="mobile-menu">
-        <ul>
-            <li><a href="">News</a></li>
-            <li><a href="">Features</a></li>
-            <li><a href="">Photo</a></li>
-            <li><a href="">Multimedia</a></li>
-            <li><a href="">Columns</a></li>
-            <li><a href="">Editorial</a></li>
-            <li><a href="">Opinion</a></li>
-            <li><a href="">Sports</a></li>
-            <li><a href="">Entertainment</a></li>
-        </ul>
+              <?php
+                wp_nav_menu(array(
+                    'menu' => wp_get_nav_menu_name( 'sections' ),
+                    'menu_class' => "menu-items",
+                    'container' => "nav",
+                    'container_id' => "menu",
+                    'depth' => "1",
+                )); ?>
     </div>
 </div>
-<header>
+<header class="site-header">
     <div class="search-dropdown">
         <div class="search-dropdown-inner">
-            <form class="search-dropdown-form">
+            <form class="search-dropdown-form" method="get" action="<?php echo home_url('/'); ?>">
                 <i class="far fa-search"></i>
                 <input type="text" class="search-field" name="s" value="<?php the_search_query(); ?>" placeholder="Enter your search term and press enter...">
             </form>
@@ -38,7 +35,11 @@
                     'depth' => "1",
                 )); ?>
             </ul>
-            <a href="/login" class="login-link">Login</a>
+			<?php if(is_user_logged_in()) { ?>
+			<a href="<?php echo wp_logout_url(get_site_url()) ?>" class="login-link">Logout</a>
+			<?php } else { ?>
+            <a href="<?php echo wp_login_url(get_site_url()) ?>" class="login-link">Login</a>
+			<?php } ?>
         </div>
     </div>
     <div class="donation-dropdown">

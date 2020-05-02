@@ -64,6 +64,7 @@ $(document).ready(function(){
   });
 
   $('header .header-button').click(function(){
+    if($(window).width() > 1155) {
       if(sectionsToggle == true) {
           $('.sections-dropdown').fadeOut('fast', function(){
               $('.donation-dropdown').fadeIn('fast');
@@ -80,6 +81,9 @@ $(document).ready(function(){
           $('.donation-dropdown').slideToggle();
           donationToggle = !donationToggle;
       }
+    } else {
+      window.location.href = "//berkeleyhighjacket.com/donate";
+    }
   });
 
   $(document).scroll(function(){
