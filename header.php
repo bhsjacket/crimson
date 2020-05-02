@@ -2,72 +2,115 @@
 
 <body id="<?php print get_stylesheet(); ?>" <?php body_class(); ?>>
 
-<?php get_template_part('php/donation-banner'); ?>
-
-<header id="header">
-    <div class="masthead-outer">
-        <section id='masthead'>
-            <div class="masthead-left">
-                <p class="tagline">The Voice of the Students</p>
-                <?php
-                $api_url = "http://api.openweathermap.org/data/2.5/weather?id=5327684&lang=en&units=imperial&APPID=47697438d4ba438b6cd5f5786542d2ef";
-
-                $ch = curl_init();
-
-                curl_setopt($ch, CURLOPT_HEADER, 0);
-                curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-                curl_setopt($ch, CURLOPT_URL, $api_url);
-                curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
-                curl_setopt($ch, CURLOPT_VERBOSE, 0);
-                curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
-                $response = curl_exec($ch);
-
-                curl_close($ch);
-                $data = json_decode($response);
-                $currentTime = time();
-                ?>
-                <?php if( $data->cod !== 429) { ?>
-                <p class="date"><?php echo date('F j, Y'); ?> - Feels Like <?php echo round($data->main->feels_like); ?>°F</p>
-                <?php } ?>
-            </div>
-            <div class="masthead-center">
-                <div class="logo-outer">
-                    <a href="/">
-                        <img class="logo" src="<?php echo get_template_directory_uri(); ?>/images/masthead-light.svg">
-                    </a>
-                </div>
-            </div>
-            <div class="masthead-right">
-                <a class="button outline light" href="/subscribe">Subscribe</a>
-            </div>
-        </section>
+<div class="mobile-menu-outer">
+    <div class="mobile-menu">
+        <ul>
+            <li><a href="">News</a></li>
+            <li><a href="">Features</a></li>
+            <li><a href="">Photo</a></li>
+            <li><a href="">Multimedia</a></li>
+            <li><a href="">Columns</a></li>
+            <li><a href="">Editorial</a></li>
+            <li><a href="">Opinion</a></li>
+            <li><a href="">Sports</a></li>
+            <li><a href="">Entertainment</a></li>
+        </ul>
     </div>
-    <div class="navigation-outer">
-        <section id="navigation">
-            <div class="navigation-left">
-                <?php get_search_form(); ?>
+</div>
+<header>
+    <div class="search-dropdown">
+        <div class="search-dropdown-inner">
+            <form class="search-dropdown-form">
+                <i class="far fa-search"></i>
+                <input type="text" class="search-field" name="s" value="<?php the_search_query(); ?>" placeholder="Enter your search term and press enter...">
+            </form>
+        </div>
+    </div>
+    <div class="sections-dropdown">
+        <div class="sections-dropdown-inner">
+            <ul>
+            <?php
+                wp_nav_menu(array(
+                    'menu' => wp_get_nav_menu_name( 'sections' ),
+                    'menu_class' => "menu-items",
+                    'container' => "nav",
+                    'container_id' => "menu",
+                    'depth' => "1",
+                )); ?>
+            </ul>
+            <a href="/login" class="login-link">Login</a>
+        </div>
+    </div>
+    <div class="donation-dropdown">
+        <div class="donation-dropdown-inner">
+            <div class="donation-dropdown-left">
+                <i class="far fa-newspaper"></i>
+                <span>Help us continue to provide a platform for professional-level student journalism.</span>
             </div>
-            <div class="navigation-center">
-                    <?php wp_nav_menu( array(
-                        'menu' => wp_get_nav_menu_name( 'sections' ),
-                        'menu_class' => "menu-items",
-                        'container' => "nav",
-                        'container_id' => "menu",
-                        'depth' => "1",
-                    ) ); ?>
-                <div class="mobile-menu">
-                    <a href="/?s="><i class="fas fa-search"></i></a>
-                    <a href="/?s=" class="mobile-menu-search">Search</a>
-                    <?php foreach( wp_get_nav_menu_items( wp_get_nav_menu_name( 'sections' ) ) as $menu_item ) { ?>
-                    <a href="<?php echo $menu_item->url; ?>" class="mobile-menu-item"><?php echo $menu_item->title; ?></a>
-                    <?php } ?>
+            <div class="donation-dropdown-right">
+                <div class="donation-dropdown-form">
+                    <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
+                        <input type="hidden" name="cmd" value="_donations" />
+                        <input type="hidden" name="business" value="bhsasb@berkeley.net" />
+                        <input type="hidden" name="item_name" value="Donation to the Berkeley High Jacket newspaper" />
+                        <input type="hidden" name="currency_code" value="USD" />
+                        <input type="hidden" name="return" value="<?php echo get_site_url() . $_SERVER['REQUEST_URI']; ?>?donation=completed" />
+                        <select name="amount">
+                            <option value="10.00">$10</option>
+                            <option value="25.00" selected>$25</option>
+                            <option value="50.00">$50</option>
+                            <option value="100.00">$100</option>
+                            <option value>Other</option>
+                        </select>
+                        <input type="submit" value="Support the Jacket">
+                    </form>
                 </div>
             </div>
-            <div class="navigation-right">
-                <a href="/login">Login</a>
+        </div>
+    </div>
+    <div class="default-header">
+        <div class="header-inner">
+            <div class="header-left">
+                <ul>
+                    <li class="sections-toggle"><i class="far fa-bars"></i><span>Sections</span></li>
+                    <li><a href="/section/news">News</a></li>
+                    <li><a href="/section/features">Features</a></li>
+                    <li><a href="/section/opinion">Opinion</a></li>
+                </ul>
             </div>
-        </section>
+            <div class="header-center">
+                <a href="<?php echo get_site_url(); ?>"><img class="header-logo" src="<?php echo get_template_directory_uri(); ?>/images/masthead-dark.svg"></a>
+            </div>
+            <div class="header-right">
+                <ul>
+                    <li><a href="/subscribe">Subscribe</a></li>
+                    <li class="header-button">Support Us</li>
+                    <li class="search-toggle search-toggle-mobile"><span>Search</span><i class="far fa-search"></i></li>
+                    <li class="search-toggle"><i class="far fa-search"></i></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="sticky-sections">
+        <div class="sticky-sections-inner">
+            <div class="sticky-sections-left">
+                <?php
+                wp_nav_menu(array(
+                    'menu' => wp_get_nav_menu_name( 'sections' ),
+                    'menu_class' => "menu-items",
+                    'container' => "nav",
+                    'container_id' => "menu",
+                    'depth' => "1",
+                )); ?>
+            </div>
+            <div class="sticky-sections-right">
+                <ul>
+                    <li><a href="/subscribe">Subscribe</a></li>
+                    <li class="header-button">Support Us</li>
+                    <li class="search-toggle"><i class="far fa-search"></i></li>
+                </ul>
+            </div>
+        </div>
     </div>
 </header>
-
-<?php get_template_part('php/posts/universal/sticky'); ?>

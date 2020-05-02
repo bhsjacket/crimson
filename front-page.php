@@ -74,7 +74,7 @@ if( have_rows('modules', 'option') ):
         elseif(get_row_layout() == 'title'): // Title
             set_query_var('display-info', array(
                 'title' => get_sub_field('title'),
-                'url' => get_sub_field('title'),
+                'url' => get_sub_field('url'),
                 'icon' => get_sub_field('icon'),
                 'icon-color' => get_sub_field('icon_color'),
                 'text-color' => get_sub_field('text_color')

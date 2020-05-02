@@ -1,4 +1,4 @@
-<?php if($_COOKIE['donation'] !== 'closed' || $_COOKIE['donation'] !== 'completed') { ?>
+<?php if($_COOKIE['donation'] !== 'closed' && $_COOKIE['donation'] !== 'completed') { ?>
 
 <script>
     function closeDonationBanner() {
@@ -33,7 +33,6 @@
             <button class="donation-banner-close" onclick="closeDonationBanner();">Hide</button>
         </div>
         <?php } else { ?>
-        <canvas id="confetti"></canvas>
         <h1 class="donation-thanks">Thank you for your donation!</h1>
         <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.2.0/dist/confetti.browser.min.js"></script>
         <script>
