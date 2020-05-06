@@ -19,6 +19,21 @@ body {
     -moz-osx-font-smoothing: auto;
 }
 
+.wider {
+    max-width: 1140px;
+    margin: 0 auto;
+}
+
+.wide {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.normal {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
 ::selection {
     background-color: #800000;
     color: white;
@@ -719,8 +734,7 @@ a.link:hover,
 }
 
 .wider-image,
-.full-width-image,
-.wide {
+.full-width-image {
     max-width: 800px;
 }
 
@@ -792,101 +806,6 @@ a.link:hover,
 }
 .old-article i {
     padding-right: 5px;
-}
-
-/* Author Boxes */
-.author-boxes {
-    padding: 5px 15px 0 15px;
-    max-width: 600px;
-    margin: 0 auto;
-}
-
-@media all and (orientation:portrait) {
-    .author-box {
-        display: block!important;
-    }
-    .author-box-info-column {
-        padding-left: 0!important   ;
-    }
-    .author-box-avatar-column {
-        padding-right: 0!important;
-        padding-bottom: 10px;
-    }
-    .author-box-info-column {
-        width: 100%!important;
-    }
-}
-
-.author-box {
-    display: flex;
-    border-top: solid 1px #e7e7e7;
-    border-bottom: solid 1px #e7e7e7;
-    padding: 15px 0;
-    margin: 15px 0;
-}
-
-.author-box-social ul {
-    list-style: none;
-    padding: 0;
-}
-
-.author-box-social ul li {
-    display: inline;
-}
-
-.author-box-social ul li .more-posts {
-    font-family: 'PT Sans', sans-serif;
-    font-size: 16px;
-    text-decoration: none;
-}
-
-.author-box-avatar-column {
-    width: 20%;
-}
-
-.author-box-info-column {
-    width: 80%;
-}
-
-.author-box-name {
-    margin-top: 0;
-    margin-bottom: 5px;
-    font-family: "Noe Display", serif;
-    font-weight: normal;
-}
-
-.author-box-bio {
-    margin: 0;
-    font-family: "PT Serif", serif;
-    font-size: 16px;
-    margin-bottom: 5px;
-}
-
-.author-box-avatar {
-    width: 100%;
-    border-radius: 100%;
-}
-
-.author-box-avatar img {
-    margin-bottom: -4px;
-}
-
-.author-box-avatar-column {
-    padding-right: 10px;
-}
-
-.author-box-info-column {
-    padding-left: 10px;
-}
-
-.author-box-social {
-    padding-top: 10px;
-}
-
-.author-box-social a:not(.button) {
-    color: black;
-    font-size: 18px;
-    padding: 0 5px;
 }
 
 /* Byline */
@@ -2045,3 +1964,104 @@ blockquote:before {
 [data-minimized-position="middle_right"] > .fade > div:last-child {
     display: none; /* Hide Hotjar branding */
 }
+
+/* Recommended Posts */
+.recommended-posts {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+.recommended-post {
+    display: flex;
+    align-items: center;
+    margin: 15px 0;
+}
+
+.recommended-title {
+    width: 100%;
+}
+
+.recommended-post h3,
+.recommended-post .title {
+    display: inline;
+    font-family: 'PT Serif', serif;
+    font-size: 22px;
+    font-weight: normal;
+    text-decoration: none;
+    color: black;
+}
+
+.recommended-post .date {
+    font-family: 'PT Sans', sans-serif;
+    padding-left: 2px;
+    color: gray;
+    font-size: 15px;
+    text-decoration: none;
+}
+
+.recommended-post img {
+    width: 150px;
+    padding-left: 15px;
+}
+/* End Recommended Posts */
+
+/* Author Boxes */
+
+.author-boxes {
+    display: grid;
+    margin-top: 5px;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 15px;
+    padding: 15px;
+    border: solid 1px #e7e7e7;
+}
+
+.author-box {
+    display: flex;
+    align-items: center;
+}
+
+.author-box h2 {
+    margin: 0;
+    font-family: 'PT Sans', sans-serif;
+    font-weight: normal;
+    font-size: 17px;
+    margin-bottom: -3px;
+}
+
+.author-box span {
+    color: gray;
+    font-family: 'PT Sans', sans-serif;
+    font-size: 15px;
+}
+
+.author-box a {
+    text-decoration: none;
+    color: black;
+}
+
+.author-box img {
+    width: 48px;
+    height: 48px;
+    padding-right: 15px;
+}
+
+.author-box-info {
+    width: 100%;
+}
+
+@media all and (orientation: portrait) {
+    .author-boxes {
+        border-right: none;
+        border-left: none;
+        display: block;
+    }
+    .author-box {
+        padding-bottom: 15px;
+    }
+    .author-box:last-child {
+        padding-bottom: 0;
+    }
+}
+/* End Author Boxes */

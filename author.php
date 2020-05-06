@@ -1,20 +1,19 @@
 <?php
-// Set the Current Author Variable $author
-$author = (isset($_GET['author_name'])) ? get_user_by('slug', $author_name) : get_userdata(intval($author));
-
-$args = array(
-    'post_type' => array('column','post'),
-    'author' => get_queried_object_id(), // this will be the author ID on the author page
-    'showposts' => 10
+// Custom WP query author_query
+$args_author_query = array(
+	'post_type' => array('post','column'),
+	'post_status' => array('publish'),
+	'posts_per_page' => 20,
+	'ignore_sticky_posts' => true,
+	'order' => 'DESC',
+    'author' => get_queried_object_id(),
+    // 'meta_key' => 'author',
+    // 'meta_value' => get_the_author_meta('display_name', get_queried_object_id()),
 );
-$custom_posts = new WP_Query( $args );
-if ( $custom_posts->have_posts() ):
-    while ( $custom_posts->have_posts() ) : $custom_posts->the_post();
-        // your markup
-    endwhile;
-else:
-    // nothing found
-endif;
+
+$author_query = new WP_Query( $args_author_query );
+
+$author = get_userdata(get_queried_object_id());
 ?>
 
 <?php get_header(); ?>
@@ -40,7 +39,7 @@ endif;
     </div>
 </div>
  
-<?php if ( $custom_posts->have_posts() ) : while ( $custom_posts->have_posts() ) : $custom_posts->the_post(); ?>
+<?php if ( $author_query->have_posts() ) : while ( $author_query->have_posts() ) : $author_query->the_post(); ?>
 
 <div class="search-result<?php if(get_post_type() == 'page') { echo ' page-result '; }; ?><?php if(has_post_thumbnail() == false &&  get_post_type() !== 'column') { echo ' no-image '; }; ?><?php if(get_post_type() == 'column') { echo ' column-image '; }; ?><?php if(get_the_terms($post->ID, 'syndication')[0]->slug == 'front-feature') { echo ' front-feature plus animated_xy'; }; ?>">
     <?php if(get_post_type() !== 'page') { ?>

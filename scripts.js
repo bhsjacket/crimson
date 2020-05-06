@@ -13,6 +13,14 @@ $('#advanced-search-popup .close').click(function(){
   $('#advanced-search-popup').toggleClass('popup-shown');
 });
 
+// Animate Anchor Link Scroll
+$(document).on('click', 'a[href^="#"]', function (event) {
+    event.preventDefault();
+    $('html, body').animate({
+        scrollTop: $($.attr(this, 'href')).offset().top
+    }, 2500, 'swing');
+});
+
 // Header
 $(document).ready(function(){
   var donationToggle = false;

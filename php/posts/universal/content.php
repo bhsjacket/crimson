@@ -36,30 +36,16 @@
     <?php the_content(); ?>
 </main>
 
-<?php get_template_part('php/posts/universal/donation'); ?>
+<?php // get_template_part('php/posts/universal/donation'); ?>
 
-<div class="author-boxes" id="authors">
+<div class="author-boxes normal" id="authors">
 <?php foreach( get_coauthors() as $coauthor ) { ?>
-
-<div class="author-box-outer">
     <div class="author-box">
-        <div class="author-box-avatar-column">
-            <img src="<?php echo get_avatar_url($coauthor->data->ID); ?>" class="author-box-avatar">
+        <img src="<?php echo get_avatar_url($coauthor->data->ID); ?>" class="author-box-avatar">
+        <div class="author-box-info">
+            <a href="<?php echo get_author_posts_url($coauthor->ID); ?>"><h2><?php echo $coauthor->display_name ?></h2></a>
+            <span class="author-role"><?php echo get_field('position', 'user_' . $coauthor->ID); ?></span>
         </div>
-        <div class="author-box-info-column">
-            <h2 class="author-box-name"><?php echo $coauthor->display_name ?></h2>
-            <p class="author-box-bio"><?php echo esc_html( get_the_author_meta('description', $coauthor->data->ID) ) ?></p>
-            <div class="author-box-social">
-                <ul>
-                    <li><?php if(!empty(get_the_author_meta( 'twitter' ))) { ?><a href="https://twitter.com/<?php echo get_the_author_meta( 'twitter' ); ?>"><i class="fab fa-twitter"></i></a><?php } ?></li>
-                    <li><?php if(!empty(get_the_author_meta( 'instagram' ))) { ?><a href="https://instagram.com/<?php echo get_the_author_meta( 'instagram' ); ?>"><i class="fab fa-instagram"></i></a><?php } ?></li>
-                    <li><?php if(!empty(get_the_author_meta( 'facebook' ))) { ?><a href="<?php echo get_the_author_meta( 'facebook' ); ?>"><i class="fab fa-facebook"></i></a><?php } ?></li>
-                    <li><?php if(!empty($coauthor->user_email)) { ?><a href="mailto:<?php echo $coauthor->user_email; ?>"><i class="fas fa-envelope"></i></a><?php } ?></li>
-                    <li><a class="more-posts" href="<?php echo get_author_posts_url($coauthor->ID); ?>">All posts →</a></li>
-                </ul>
-            </div>
-        </div>
-    </div>
 </div>
 <?php } ?>
 </div>
