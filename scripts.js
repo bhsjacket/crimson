@@ -142,13 +142,18 @@ $(document).ready(function() {
     }
 
     function updateProgressBar() {
-        // this does not work, keep it for now
-        var progress = (($(document).scrollTop() - $('.article-content > p:last-child').offset().top) / $('.article-content').height()) * $(document).width();
-        // this solution works even worse, fix it
-        /* var progress = ((($('.article-content').height() / ($(document).scrollTop() - $('.article-content').offset().top) - ($('.article-content > *:last-child').offset().top - $('.article-content').offset().top))) / $('.article-content').height()) * $(window).width(); */
-        console.log(Math.round(progress));
+        var progress = (($(document).scrollTop() - $('.article-content').offset().top) / $('.article-content').height()) * $(window).width();
+        
         $(".progress-bar").width(progress);
-        if ($(window).width() - progress < 100) {
+        if(getCookie('article_trigger') == 'true') {
+            if(progress >= $(window).width()) {
+                $('.progress-bar').fadeOut('slow');
+            } else {
+                $('.progress-bar').fadeIn('slowot');
+            }
+        }
+
+        if ($(window).width() - progress < 200) {
             if(getCookie('article_trigger') !== 'true') {
                 if($(window).width() > 1155) {
                     if (!donationToggle && !sectionsToggle && !searchToggle) {
@@ -162,6 +167,7 @@ $(document).ready(function() {
                         $('.donation-dropdown .fa-clock').removeClass('fa-newspaper');
                         $('.donation-dropdown').slideDown();
                         donationToggle = true;
+                        $('.progress-bar').fadeOut('fast');
                     }
                 }
             }
