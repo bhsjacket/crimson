@@ -6,6 +6,7 @@ $args_query = array(
     'category_name' => get_the_category()[0]->name,
     'posts_per_page' => 3,
     'offset' => $offset,
+    'meta_key' => '_thumbnail_id',
 );
 
 $query = new WP_Query( $args_query );

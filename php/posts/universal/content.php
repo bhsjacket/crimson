@@ -38,6 +38,7 @@
 
 <?php // get_template_part('php/posts/universal/donation'); ?>
 
+<?php if(count(get_coauthors()) > 1) { ?>
 <div class="author-boxes normal" id="authors">
 <?php foreach( get_coauthors() as $coauthor ) { ?>
     <div class="author-box">
@@ -49,18 +50,14 @@
 </div>
 <?php } ?>
 </div>
+<?php } else { ?>
 
-<?php }} ?>
-
-<?php if(count(get_coauthors()) > 1) { ?> 
 <style>
-.author-box {
-    margin-bottom: 0;
-    border-bottom: none;
-}
-.author-box-outer:last-child .author-box {
-    border-bottom: solid 1px #e7e7e7;
-    margin-bottom: 15px;
-}
+    .recommended-post:first-child {
+        border-top: solid 1px #e7e7e7;
+        padding-top: 15px;
+        margin-top: 0;
+    }
 </style>
-<?php } ?>
+
+<?php }}} ?>

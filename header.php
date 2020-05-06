@@ -114,4 +114,7 @@
             </div>
         </div>
     </div>
+    <?php if(is_singular(array('post', 'column'))) { ?>
+    <div class="progress-bar"></div>
+    <?php } ?>
 </header>

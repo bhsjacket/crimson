@@ -1,20 +1,20 @@
 jQuery(document).ready(function() {
-  jQuery(".article-content > p:last-child").append(" &#x25C6;"); // Add Tombstone
-  mediumZoom('.article-content img'); // Image Zoom
-  mediumZoom('.image-in-post > img'); // Image Zoom
-  mediumZoom('.featured-image > img'); // Image Zoom
+    jQuery(".article-content > p:last-child").append(" &#x25C6;"); // Add Tombstone
+    mediumZoom('.article-content img'); // Image Zoom
+    mediumZoom('.image-in-post > img'); // Image Zoom
+    mediumZoom('.featured-image > img'); // Image Zoom
 });
 
 // Advanced Search Popup
-$('.advanced-search').click(function(){
-  $('#advanced-search-popup').toggleClass('popup-shown');
+$('.advanced-search').click(function() {
+    $('#advanced-search-popup').toggleClass('popup-shown');
 });
-$('#advanced-search-popup .close').click(function(){
-  $('#advanced-search-popup').toggleClass('popup-shown');
+$('#advanced-search-popup .close').click(function() {
+    $('#advanced-search-popup').toggleClass('popup-shown');
 });
 
 // Animate Anchor Link Scroll
-$(document).on('click', 'a[href^="#"]', function (event) {
+$(document).on('click', 'a[href^="#"]', function(event) {
     event.preventDefault();
     $('html, body').animate({
         scrollTop: $($.attr(this, 'href')).offset().top
@@ -22,111 +22,164 @@ $(document).on('click', 'a[href^="#"]', function (event) {
 });
 
 // Header
-$(document).ready(function(){
-  var donationToggle = false;
-  var sectionsToggle = false;
-  var searchToggle = false;
+$(document).ready(function() {
+    var donationToggle = false;
+    var sectionsToggle = false;
+    var searchToggle = false;
 
-  $('.sections-toggle').click(function(){
-      if($(window).width() > 925) {
-          if(searchToggle == true) {
-              $('.search-dropdown').fadeOut('fast', function(){
-                  $('.sections-dropdown').fadeIn('fast');
-                  sectionsToggle = true;
-                  searchToggle = false;
-              });
-          } else if(donationToggle == true) {
-              $('.donation-dropdown').fadeOut('fast', function(){
-                  $('.sections-dropdown').fadeIn('fast');
-                  sectionsToggle = true;
-                  donationToggle = false;
-              });
-          } else {
-              $('.sections-dropdown').slideToggle();
-              sectionsToggle = !sectionsToggle;
-          }
-      } else {
-          $('.mobile-menu-outer').fadeToggle('fast');
-      }
-  });
+    $('.sections-toggle').click(function() {
+        if ($(window).width() > 925) {
+            if (searchToggle == true) {
+                $('.search-dropdown').fadeOut('fast', function() {
+                    $('.sections-dropdown').fadeIn('fast');
+                    sectionsToggle = true;
+                    searchToggle = false;
+                });
+            } else if (donationToggle == true) {
+                $('.donation-dropdown').fadeOut('fast', function() {
+                    $('.sections-dropdown').fadeIn('fast');
+                    sectionsToggle = true;
+                    donationToggle = false;
+                });
+            } else {
+                $('.sections-dropdown').slideToggle();
+                sectionsToggle = !sectionsToggle;
+            }
+        } else {
+            $('.mobile-menu-outer').fadeToggle('fast');
+        }
+    });
 
-  $('.search-toggle').click(function(){
-      $('.mobile-menu').toggleClass('search-expanded');
-      if(sectionsToggle == true) {
-          $('.sections-dropdown').fadeOut('fast', function(){
-              $('.search-dropdown').fadeIn('fast');
-              searchToggle = true;
-              sectionsToggle = false;
-          });
-      } else if(donationToggle == true) {
-          $('.donation-dropdown').fadeOut('fast', function(){
-              $('.search-dropdown').fadeIn('fast');
-              searchToggle = true;
-              donationToggle = false;
-          });
-      } else {
-          $('.search-dropdown').slideToggle();
-          searchToggle = !searchToggle;
-      }
-      $('.search-field').focus();
-  });
+    $('.search-toggle').click(function() {
+        $('.mobile-menu').toggleClass('search-expanded');
+        if (sectionsToggle == true) {
+            $('.sections-dropdown').fadeOut('fast', function() {
+                $('.search-dropdown').fadeIn('fast');
+                searchToggle = true;
+                sectionsToggle = false;
+            });
+        } else if (donationToggle == true) {
+            $('.donation-dropdown').fadeOut('fast', function() {
+                $('.search-dropdown').fadeIn('fast');
+                searchToggle = true;
+                donationToggle = false;
+            });
+        } else {
+            $('.search-dropdown').slideToggle();
+            searchToggle = !searchToggle;
+        }
+        $('.search-field').focus();
+    });
 
-  $('header .header-button').click(function(){
-    if($(window).width() > 1155) {
-      if(sectionsToggle == true) {
-          $('.sections-dropdown').fadeOut('fast', function(){
-              $('.donation-dropdown').fadeIn('fast');
-              donationToggle = true;
-              sectionsToggle = false;
-          });
-      } else if(searchToggle == true) {
-          $('.search-dropdown').fadeOut('fast', function(){
-              $('.donation-dropdown').fadeIn('fast');
-          });
-          donationToggle = true;
-          searchToggle = false;
-      } else {
-          $('.donation-dropdown').slideToggle();
-          donationToggle = !donationToggle;
-      }
-    } else {
-      window.location.href = "//berkeleyhighjacket.com/donate";
+    $('header .header-button').click(function() {
+        if ($(window).width() > 1155) {
+            if (sectionsToggle == true) {
+                $('.sections-dropdown').fadeOut('fast', function() {
+                    $('.donation-dropdown').fadeIn('fast');
+                    donationToggle = true;
+                    sectionsToggle = false;
+                });
+            } else if (searchToggle == true) {
+                $('.search-dropdown').fadeOut('fast', function() {
+                    $('.donation-dropdown').fadeIn('fast');
+                });
+                donationToggle = true;
+                searchToggle = false;
+            } else {
+                $('.donation-dropdown').slideToggle();
+                donationToggle = !donationToggle;
+            }
+        } else {
+            window.location.href = "//berkeleyhighjacket.com/donate";
+        }
+    });
+
+    $(document).scroll(function() {
+        if ($(window).width() > 925) {
+            if ($(document).scrollTop() > 400) {
+                if (sectionsToggle == true) {
+                    $('.sections-dropdown').slideUp();
+                    sectionsToggle = false;
+                }
+                $('.header-left, .header-center').fadeOut('fast', function() {
+                    $('.header-right, .default-header').hide();
+                    $('.sticky-sections-left').fadeIn('fast');
+                    $('.sticky-sections-right, .sticky-sections').show();
+                })
+            } else {
+                $('.sticky-sections-left').fadeOut('fast', function() {
+                    $('.sticky-sections-right, .sticky-sections').hide();
+                    $('.header-left, .header-center').fadeIn('fast');
+                    $('.header-right, .default-header').show();
+                });
+            }
+        } else {
+            $('.sticky-sections-left').fadeOut('fast', function() {
+                $('.sticky-sections-right, .sticky-sections').hide();
+                $('.header-left, .header-center').fadeIn('fast');
+                $('.header-right, .default-header').show();
+            });
+        }
+    });
+
+    // Progress Bar
+    function getCookie(name) {
+        var dc = document.cookie;
+        var prefix = name + "=";
+        var begin = dc.indexOf("; " + prefix);
+        if(begin == -1) {
+            begin = dc.indexOf(prefix);
+            if(begin != 0) return null;
+        }
+        else {
+            begin += 2;
+            var end = document.cookie.indexOf(";", begin);
+            if(end == -1) {
+            end = dc.length;
+            }
+        }
+        return decodeURI(dc.substring(begin + prefix.length, end));
     }
-  });
 
-  $(document).scroll(function(){
-      if($(window).width() > 925) {
-          if($(document).scrollTop() > 400) {
-              if(sectionsToggle == true) {
-                  $('.sections-dropdown').slideUp();
-                  sectionsToggle = false;
-              }
-              $('.header-left, .header-center').fadeOut('fast', function(){
-                  $('.header-right, .default-header').hide();
-                  $('.sticky-sections-left').fadeIn('fast');
-                  $('.sticky-sections-right, .sticky-sections').show();
-              })
-          } else {
-              $('.sticky-sections-left').fadeOut('fast', function(){
-                  $('.sticky-sections-right, .sticky-sections').hide();
-                  $('.header-left, .header-center').fadeIn('fast');
-                  $('.header-right, .default-header').show();
-              });
-          }
-      } else {
-          $('.sticky-sections-left').fadeOut('fast', function(){
-              $('.sticky-sections-right, .sticky-sections').hide();
-              $('.header-left, .header-center').fadeIn('fast');
-              $('.header-right, .default-header').show();
-          });
-      }
-  });
+    function updateProgressBar() {
+        // this does not work, keep it for now
+        var progress = (($(document).scrollTop() - $('.article-content > p:last-child').offset().top) / $('.article-content').height()) * $(document).width();
+        // this solution works even worse, fix it
+        /* var progress = ((($('.article-content').height() / ($(document).scrollTop() - $('.article-content').offset().top) - ($('.article-content > *:last-child').offset().top - $('.article-content').offset().top))) / $('.article-content').height()) * $(window).width(); */
+        console.log(Math.round(progress));
+        $(".progress-bar").width(progress);
+        if ($(window).width() - progress < 100) {
+            if(getCookie('article_trigger') !== 'true') {
+                if($(window).width() > 1155) {
+                    if (!donationToggle && !sectionsToggle && !searchToggle) {
+                        var now = new Date();
+                        var time = now.getTime();
+                        time += 3600 * 1000;
+                        now.setTime(time);
+                        document.cookie = 'article_trigger=true;expires=' + now.toUTCString() + '; path=/';
+                        $('.donation-dropdown span').text('We hope you enjoyed this article. Help us continue to produce professional-level journalism.');
+                        $('.donation-dropdown .fa-newspaper').addClass('fa-clock');
+                        $('.donation-dropdown .fa-clock').removeClass('fa-newspaper');
+                        $('.donation-dropdown').slideDown();
+                        donationToggle = true;
+                    }
+                }
+            }
+        }
+    }
 
-  $(window).resize(function(){
-      if($(window).width() > 925) {
-          $('.mobile-menu-outer').fadeOut('fast');
-      }
-  });
+    updateProgressBar();
+
+    $(document).scroll(function(){
+        updateProgressBar();
+    });
+
+    $(window).resize(function() {
+        updateProgressBar();
+        if ($(window).width() > 925) {
+            $('.mobile-menu-outer').fadeOut('fast');
+        }
+    });
 });
 
 // Headline Balancer
