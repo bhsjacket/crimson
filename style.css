@@ -1618,19 +1618,19 @@ blockquote:before {
     .five-post {
         padding-bottom: 0!important;
     }
-    a:first-child {
+    .five-post a:first-child {
         grid-area: 1 / 1 / 2 / 2;
     }
-    a:nth-child(2) {
+    .five-post a:nth-child(2) {
         grid-area: 1 / 2 / 2 / 3;
     }
-    a:nth-child(3) {
+    .five-post a:nth-child(3) {
         grid-area: 0 / 1 / 3 / 2;
     }
-    a:nth-child(4) {
+    .five-post a:nth-child(4) {
         grid-area: 2 / 2 / 3 / 3;
     }
-    a:nth-child(5) {
+    .five-post a:nth-child(5) {
         grid-area: 3 / 1 / 4 / 3;
     }
     .page-result a:nth-child(2) {
@@ -1985,22 +1985,22 @@ blockquote:before {
     padding: 0 15px;
 }
 
-.recommended-post {
+.recommended-posts .recommended-post {
     display: flex;
     align-items: center;
     margin: 15px 0;
 }
 
-.recommended-post > a {
+.recommended-posts .recommended-post > a {
     margin-bottom: -4px;
 }
 
-.recommended-title {
+.recommended-posts .recommended-title {
     width: 100%;
 }
 
-.recommended-post h3,
-.recommended-post .title {
+.recommended-posts .recommended-post h3,
+.recommended-posts .recommended-post .title {
     display: inline;
     font-family: 'PT Serif', serif;
     font-size: 22px;
@@ -2009,7 +2009,7 @@ blockquote:before {
     color: black;
 }
 
-.recommended-post .date {
+.recommended-posts .recommended-post .date {
     font-family: 'PT Sans', sans-serif;
     padding-left: 2px;
     color: gray;
@@ -2017,7 +2017,7 @@ blockquote:before {
     text-decoration: none;
 }
 
-.recommended-post img {
+.recommended-posts .recommended-post img {
     width: 150px;
     padding-left: 15px;
 }
