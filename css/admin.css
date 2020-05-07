@@ -1,3 +1,35 @@
+.block-editor-page .edit-post-sidebar .components-panel .components-panel__body,
+#acf-group_acfe_author,
+.block-editor-page .acf-gallery-sort,
+.editor-post-publish-panel__prepublish .components-panel__body {
+    display: none!important;
+}
+.block-editor-page .is-side .postbox-container {
+    overflow: hidden;
+    padding: 0 15px 15px 15px;
+}
+.block-editor-page .inside.acf-fields.-top,
+.block-editor-page .components-panel {
+    border-bottom: none;
+}
+.block-editor-page .acf-field select {
+    padding-left: 5px;
+}
+.block-editor-page [data-name="advanced"] {
+    margin-bottom: 0!important;
+}
+.edit-post-layout__metaboxes {
+    overflow: hidden!important;
+    background-color: white!important;
+    border-top: none!important;
+    padding: 15px!important;
+}
+.acf-field-taxonomy,
+.template-selector {
+    padding: 0!important;
+    margin: 15px 12px!important;
+}
+
 [data-setting="alt"],
 #alt-text-description,
 [data-setting="title"],

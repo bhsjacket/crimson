@@ -1,3 +1,18 @@
+/* GUTENBERG EDITOR */
+.editor-post-title__input {
+    font-family: 'Noe Display', serif;
+    font-weight: normal;
+    line-height: 1;
+    font-size: 48px;
+}
+
+.editor-styles-wrapper {
+    font-family: 'PT Serif', serif;
+    font-size: 17px;
+}
+
+
+/* CLASSIC EDITOR */
 .mce-content-body p {
     font-family: 'PT Serif', serif;
     font-size: 17px;

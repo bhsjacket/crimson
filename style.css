@@ -19,7 +19,7 @@ body {
     -moz-osx-font-smoothing: auto;
 }
 
-.wider {
+.full {
     max-width: 1140px;
     margin: 0 auto;
 }
@@ -2035,7 +2035,11 @@ blockquote:before {
 }
 
 .author-box {
-    display: flex;
+    display: grid;
+    grid-template-columns: 48px 1fr;
+    grid-template-rows: 48px;
+    grid-column-gap: 15px;
+    grid-row-gap: 0px;
     align-items: center;
 }
 

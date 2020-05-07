@@ -29,6 +29,8 @@ function init_actions() {
     add_theme_support( 'editor-styles' );
     add_editor_style( 'css/editor.css' );
 	add_editor_style( 'fonts/fonts.css' );
+
+	add_theme_support( 'align-wide' );
 	
 	add_theme_support( 'automatic-feed-links' ); // RSS Feeds
 
@@ -38,14 +40,16 @@ function init_actions() {
 
 add_action( 'after_setup_theme', 'init_actions' );
 
-// Admin CSS
+// Admin CSS & JS
 function load_admin_style() {
 	wp_register_style( 'admin_css', get_template_directory_uri() . '/css/admin.css', false, '1.0.0' );
 	wp_enqueue_style( 'admin_css');
-}
 
+	wp_register_script( 'admin_js', get_template_directory_uri() . '/admin.js', false, '1.0.0' );
+	wp_enqueue_script( 'admin_js');
+}
 add_action( 'admin_enqueue_scripts', 'load_admin_style' );
-// End Admin CSS
+// End Admin CSS & JS
 
 // Modify Excerpts
 function crimson_excerpt_length( $length ) {
@@ -78,7 +82,7 @@ add_filter( 'image_resize_dimensions', 'crimson_thumbnail_upscale', 10, 6 );
 
 // Co-Authors Plus Capabilities
 function cap_callback() {
-    return 'read';
+    return 'read'; // Add all users to dropdown
 }
 add_filter('coauthors_edit_author_cap', 'cap_callback');
 // End Co-Authors Plus Capabilities
@@ -88,7 +92,19 @@ include ('php/shortcodes/shortcode-functions.php');
 // End Include Shortcodes
 
 // Disable Gutenberg
-add_filter('use_block_editor_for_post', '__return_false', 10); // Disable Gutenberg
+function disable_gutenberg($is_enabled, $post_type) {
+	if ($post_type !== 'post') {
+		return false;
+	}
+	return $is_enabled;
+}
+add_filter('use_block_editor_for_post_type', 'disable_gutenberg', 10, 2);
+
+function disable_editor_fullscreen_by_default() {
+	$script = "window.onload = function() { const isFullscreenMode = wp.data.select( 'core/edit-post' ).isFeatureActive( 'fullscreenMode' ); if ( isFullscreenMode ) { wp.data.dispatch( 'core/edit-post' ).toggleFeature( 'fullscreenMode' ); } }";
+	wp_add_inline_script( 'wp-blocks', $script );
+}
+add_action( 'enqueue_block_editor_assets', 'disable_editor_fullscreen_by_default' );
 // End Disable Gutenberg
 
 // Register Menus
@@ -106,7 +122,7 @@ function crimson_menus() {
 add_action( 'init', 'crimson_menus' );
 // End Register Menus
 
-/* Hide Unwanted Blocks
+// Hide Unwanted Blocks
 add_filter( 'allowed_block_types', 'misha_allowed_block_types' );
  
 function misha_allowed_block_types( $allowed_blocks ) {
@@ -130,7 +146,7 @@ function misha_allowed_block_types( $allowed_blocks ) {
 	);
  
 }
-*/// End Hide Unwated Blocks
+// End Hide Unwated Blocks
 
 // Register Syndication Taxonomy
 add_action( 'init', 'create_syndication_taxonomy', 0 );
@@ -264,7 +280,7 @@ function create_issue_tax() {
 	$args = array(
 		'labels' => $labels,
 		'description' => __( '', 'crimson' ),
-		'hierarchical' => false,
+		'hierarchical' => true,
 		'public' => true,
 		'publicly_queryable' => true,
 		'show_ui' => true,
