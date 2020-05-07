@@ -1,0 +1,116 @@
+<head>
+    <link href="testing.css" rel="stylesheet">
+    <link href="/css/font-awesome/css/fontawesome.min.css" rel="stylesheet">
+    <link href="/css/font-awesome/css/regular.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/5.3.8/css/swiper.min.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/5.3.8/js/swiper.min.js"></script>
+</head>
+<style>
+body { margin: 0; }
+.wider { max-width: 1140px; margin: 0 auto; }
+* { -webkit-font-smoothing: antialiased; }
+</style>
+
+<body>
+
+<section class="filler"></section>
+
+<section class="small-slider wider">
+    <div class="small-swiper-container">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide">
+                <a href="">
+                    <img src="https://picsum.photos/600/400">
+                    <div class="small-slider-title">
+                        <h2>Berkeley High MCSA Hosts First Mixed-Race Speaker Series</h2>
+                        <span>By John Doe</span>
+                    </div>
+                </a>
+            </div>
+            <div class="swiper-slide">
+                <a href="">
+                    <img src="https://picsum.photos/600/400">
+                    <div class="small-slider-title">
+                        <h2>Berkeley High MCSA Hosts First Mixed-Race Speaker Series</h2>
+                        <span>By John Doe</span>
+                    </div>
+                </a>
+            </div>
+            <div class="swiper-slide">
+                <a href="">
+                    <img src="https://picsum.photos/600/400">
+                    <div class="small-slider-title">
+                        <h2>Berkeley High MCSA Hosts First Mixed-Race Speaker Series</h2>
+                        <span>By John Doe</span>
+                    </div>
+                </a>
+            </div>
+            <div class="swiper-slide">
+                <a href="">
+                    <img src="https://picsum.photos/600/400">
+                    <div class="small-slider-title">
+                        <h2>Berkeley High MCSA Hosts First Mixed-Race Speaker Series</h2>
+                        <span>By John Doe</span>
+                    </div>
+                </a>
+            </div>
+            <div class="swiper-slide">
+                <a href="">
+                    <img src="https://picsum.photos/600/400">
+                    <div class="small-slider-title">
+                        <h2>Berkeley High MCSA Hosts First Mixed-Race Speaker Series</h2>
+                        <span>By John Doe</span>
+                    </div>
+                </a>
+            </div>
+            <div class="swiper-slide">
+                <a href="">
+                    <img src="https://picsum.photos/600/400">
+                    <div class="small-slider-title">
+                        <h2>Berkeley High MCSA Hosts First Mixed-Race Speaker Series</h2>
+                        <span>By John Doe</span>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="small-nav">
+        <div class="small-nav-outer-prev">
+            <i class="far fa-arrow-left small-nav-prev"></i>
+        </div>
+        <div class="small-nav-dots"></div>
+        <div class="small-nav-outer-next">
+            <i class="far fa-arrow-right small-nav-next"></i>
+        </div>
+    </div>
+</section>
+
+<section class="filler"></section>
+
+<script>
+    $(document).ready(function(){
+        var smallSlider = new Swiper('.small-swiper-container', {
+            spaceBetween: 15,
+            slidesPerView: 1,
+            grabCursor: true,
+            pagination: {
+                el: '.small-nav-dots',
+            },
+            navigation: {
+                nextEl: '.small-nav-next',
+                prevEl: '.small-nav-prev',
+            },
+            breakpoints: {
+                1000: {
+                    slidesPerView: 3,
+                },
+                775: {
+                    slidesPerView: 2,
+                },
+            },
+        });
+    })
+</script>
+
+</body>

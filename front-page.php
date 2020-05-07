@@ -41,7 +41,15 @@ if( have_rows('modules', 'option') ):
         elseif(get_row_layout() == 'ads'): // Two Horizontal Advertisements
             get_template_part('php/ads/two-horizontal');
 
-        elseif(get_row_layout() == 'slider'): // Slider
+        elseif(get_row_layout() == 'post_slider'): // Post Slider
+            set_query_var('display-info', array(
+                'category' => get_sub_field('category')->slug,
+                'offset' => get_sub_field('offset'),
+                'posts' => get_sub_field('posts')
+            ));
+            get_template_part('php/front-page/post-slider');
+
+        elseif(get_row_layout() == 'slider'): // Fade Image Slider
             if(!empty(get_sub_field('pattern'))) {
                 if(get_sub_field('pattern_color') == 'light') {
                     $pattern = get_sub_field('pattern');

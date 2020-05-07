@@ -1,0 +1,97 @@
+.small-slider {
+    overflow: hidden;
+    padding: 0 15px;
+}
+
+.small-swiper-container {
+    height: fit-content;
+    position: relative;
+}
+
+.swiper-wrapper {
+    height: 100%;
+}
+
+.small-slider a {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-column-gap: 15px;
+    align-items: center;
+    color: black;
+    text-decoration: none;
+}
+
+.small-slider .swiper-slide img {
+    width: 100%;
+    padding-right: 15px;
+}
+
+.small-slider .swiper-slide h2 {
+    font-family: 'PT Serif', serif;
+    font-weight: normal;
+    font-size: 18px;
+    margin: 0 0 10px 0;
+}
+
+.small-slider .swiper-slide h2:hover {
+    color: #800000;
+}
+
+.small-slider-title span {
+    font-family: 'PT Sans', sans-serif;
+}
+
+.small-nav {
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.small-nav-outer-prev,
+.small-nav-outer-next,
+.small-nav-dots {
+    width: calc(100% / 3);
+}
+
+.small-nav-dots {
+    text-align: center;
+}
+
+.small-nav-next,
+.small-nav-prev {
+    cursor: pointer;
+}
+
+.small-nav-outer-next {
+    text-align: right;
+}
+
+.small-nav-next {
+    display: inline;
+}
+
+.small-nav i {
+    outline: none;
+}
+
+.small-nav i:not(.swiper-button-disabled):hover {
+    color: #800000;
+}
+
+.small-nav .swiper-button-disabled {
+    color: #e7e7e7;
+    cursor: not-allowed;
+}
+
+.small-nav .swiper-pagination-bullet {
+    background-color: #e7e7e7!important;
+    opacity: 1!important;
+    margin: 0 2.5px;
+    border-radius: 0!important;
+    width: 12px!important;
+    height: 4px!important;
+}
+
+.small-nav .swiper-pagination-bullet-active {
+    background-color: #800000!important;
+}

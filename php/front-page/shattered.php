@@ -34,7 +34,7 @@ $query = new WP_Query( $args ); ?>
 <?php if ( $image_query->have_posts() ) { while ( $image_query->have_posts() ) { $image_query->the_post(); ?>
 
 <a href="<?php echo get_permalink(); ?>" class="shattered-featured-image <?php echo $display['pattern'] ?>" style="background-color: <?php echo $display['background-color'] ?>">
-    <img src="<?php echo get_the_post_thumbnail_url(get_the_ID(), 'three-two'); ?>">
+    <img src="<?php echo get_the_post_thumbnail_url(get_the_ID(), 'medium'); ?>">
     <div class="shattered-featured-image-info">
         <h2 style="color: <?php echo $display['text-color'] ?>"><?php echo get_the_title(); ?></h2>
         <span style="color: <?php echo $display['text-color'] ?>" class="shattered-byline">By <?php echo get_the_author_meta('display_name'); ?></span>
