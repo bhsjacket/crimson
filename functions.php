@@ -93,9 +93,7 @@ include ('php/shortcodes/shortcode-functions.php');
 
 // Disable Gutenberg
 function disable_gutenberg($is_enabled, $post_type) {
-	if ($post_type !== 'post') {
-		return false;
-	}
+	if ($post_type !== 'post') return false;
 	return $is_enabled;
 }
 add_filter('use_block_editor_for_post_type', 'disable_gutenberg', 10, 2);
@@ -309,3 +307,33 @@ function crimson_admin_css() {
   </style>';
 }
 // End Add Admin CSS
+
+// Hide SEO Framework Metabox
+add_action( 'current_screen', function() {
+	// If TSF is inactive, don't do anything.
+	if ( ! function_exists( 'the_seo_framework' ) || ! the_seo_framework()->loaded )
+		return;
+
+	// Set excluded post types.
+	$excluded_post_types = [
+		'movie',
+		'book',
+	];
+	// Set required capability.
+	$required_cap = 'manage_options';
+
+	$current_screen = get_current_screen();
+
+	// Test conditions
+	if ( ! current_user_can( $required_cap )
+	|| isset( $current_screen->post_type ) && in_array( $current_screen->post_type, $excluded_post_types, true )
+	) {
+		// Disables all scripts, and rendering of the meta box.
+		add_filter( 'the_seo_framework_post_type_disabled', '__return_true' );
+
+		// Security: Don't allow the user to overwrite data, either.
+		remove_action( 'save_post', [ the_seo_framework(), 'inpost_seo_save' ], 1 );
+		remove_action( 'save_post', [ the_seo_framework(), '_save_inpost_primary_term' ], 1 );
+	}
+} );
+// End Hide SEO Framework Metabox

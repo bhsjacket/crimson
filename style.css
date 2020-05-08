@@ -816,6 +816,8 @@ a.link:hover,
     padding: 15px;
     font-family: 'PT Sans', sans-serif;
     margin-top: 15px;
+    max-width: 600px;
+    margin: 0 auto;
 }
 .old-article i {
     padding-right: 5px;
