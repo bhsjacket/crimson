@@ -791,8 +791,8 @@ a.link:hover,
 }
 
 /* Content */
-.article-content > *:not(.wide),
-#page > *:not(.wide) {
+.article-content > *:not(.wide):not(.full),
+#page > *:not(.wide):not(.full) {
     max-width: 600px;
     margin: 0 auto;
 }

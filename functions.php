@@ -27,7 +27,8 @@ function init_actions() {
     add_theme_support( 'title-tag' );
 
     add_theme_support( 'editor-styles' );
-    add_editor_style( 'css/editor.css' );
+	add_editor_style( 'css/editor.css' );
+	add_editor_style( 'css/classic-editor.css' );
 	add_editor_style( 'fonts/fonts.css' );
 
 	add_theme_support( 'align-wide' );
@@ -35,9 +36,13 @@ function init_actions() {
 	add_theme_support( 'automatic-feed-links' ); // RSS Feeds
 
     add_image_size( 'three-two', 1200, 800, true ); // 3:2 ratio
-    add_image_size( 'six-three', 1200, 600, true ); // 6:3 ratio
+	add_image_size( 'six-three', 1200, 600, true ); // 6:3 ratio
+	add_image_size( 'reasonable', 900 ); // 900px width
+	
+	remove_image_size('1536x1536');
+	remove_image_size('2048x2048');
+	add_filter( ‘big_image_size_threshold’, ‘__return_false’ );
 }
-
 add_action( 'after_setup_theme', 'init_actions' );
 
 // Admin CSS & JS
@@ -130,7 +135,7 @@ function misha_allowed_block_types( $allowed_blocks ) {
 		'core/heading',
 		'core/list',
 		'acf/extended-image',
-		'acf/two-images',
+		'acf/embed',
 		'core/quote',
 		'acf/image-gallery',
 		'core-embed/twitter',
@@ -140,7 +145,8 @@ function misha_allowed_block_types( $allowed_blocks ) {
 		'core-embed/spotify',
 		'core-embed/soundcloud',
 		'core-embed/reddit',
-		'core-embed/instagram'
+		'core-embed/instagram',
+		'acf/advertisement'
 	);
  
 }
@@ -307,33 +313,3 @@ function crimson_admin_css() {
   </style>';
 }
 // End Add Admin CSS
-
-// Hide SEO Framework Metabox
-add_action( 'current_screen', function() {
-	// If TSF is inactive, don't do anything.
-	if ( ! function_exists( 'the_seo_framework' ) || ! the_seo_framework()->loaded )
-		return;
-
-	// Set excluded post types.
-	$excluded_post_types = [
-		'movie',
-		'book',
-	];
-	// Set required capability.
-	$required_cap = 'manage_options';
-
-	$current_screen = get_current_screen();
-
-	// Test conditions
-	if ( ! current_user_can( $required_cap )
-	|| isset( $current_screen->post_type ) && in_array( $current_screen->post_type, $excluded_post_types, true )
-	) {
-		// Disables all scripts, and rendering of the meta box.
-		add_filter( 'the_seo_framework_post_type_disabled', '__return_true' );
-
-		// Security: Don't allow the user to overwrite data, either.
-		remove_action( 'save_post', [ the_seo_framework(), 'inpost_seo_save' ], 1 );
-		remove_action( 'save_post', [ the_seo_framework(), '_save_inpost_primary_term' ], 1 );
-	}
-} );
-// End Hide SEO Framework Metabox

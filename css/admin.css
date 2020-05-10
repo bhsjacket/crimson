@@ -29,6 +29,18 @@
     padding: 0!important;
     margin: 15px 12px!important;
 }
+.acf-block-fields,
+.edit-post-sidebar {
+    overflow-x: hidden!important;
+}
+.acf-block-body .acf-hl {
+    margin: 0!important;
+    padding: 0!important;
+}
+
+.block-editor-block-inspector .acf-field {
+    padding: 5px 15px!important;
+}
 
 [data-setting="alt"],
 #alt-text-description,

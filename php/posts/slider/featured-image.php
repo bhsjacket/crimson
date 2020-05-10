@@ -7,7 +7,7 @@
         <div class="swiper-wrapper">
             <?php foreach($images as $image) { ?>
             <div class="swiper-slide">
-                <img class="slideshow-image" src="<?php echo wp_get_attachment_image_src( $image['id'], 'three-two' )[0]; ?>">
+                <img class="slideshow-image" src="<?php echo wp_get_attachment_image_src( $image['id'], 'medium_large' )[0]; ?>">
             </div>
             <?php } ?>
         </div>
@@ -37,7 +37,8 @@
       $(document).ready(function() {
 
         var captionSlider = new Swiper('.caption-slider', {
-            spaceBetween: 30
+            spaceBetween: 30,
+            autoHeight: true,
         });
 
         var imageSlider = new Swiper('.image-slider', {
@@ -46,6 +47,7 @@
                 prevEl: '.swiper-button-prev',
             },
             spaceBetween: 30,
+            autoHeight: true,
             keyboard: true,
             controller: {
                 control: captionSlider,

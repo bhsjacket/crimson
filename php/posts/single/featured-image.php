@@ -1,5 +1,5 @@
 <?php if ( has_post_thumbnail() ) {
-    $thumb_url_array = wp_get_attachment_image_src(get_post_thumbnail_id(), 'large', true); ?>
+    $thumb_url_array = wp_get_attachment_image_src(get_post_thumbnail_id(), 'reasonable', false); ?>
 <!-- Image -->
 <div class="featured-image">
     <img src="<?php echo $thumb_url_array[0]; ?>">

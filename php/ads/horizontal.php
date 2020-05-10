@@ -10,4 +10,6 @@ if(!empty(get_field('horizontal_ads', 'option'))) {
 }
 ?>
 
-<a <?php if(!empty($horizontal_ad['caption'])) { ?> href="<?php echo esc_url($horizontal_ad['caption']); ?>" <?php } ?>><img class="horizontal" src="<?php echo $horizontal_ad['url'] ?>"></a>
+<div class="horizontal-banner">
+    <a <?php if(!empty($horizontal_ad['caption'])) { ?> href="<?php echo esc_url($horizontal_ad['caption']); ?>" <?php } ?>><img class="horizontal no-zoom" src="<?php echo $horizontal_ad['url'] ?>"></a>
+</div>

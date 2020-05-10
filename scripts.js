@@ -1,8 +1,11 @@
 jQuery(document).ready(function() {
     jQuery(".article-content > p:last-child").append(" &#x25C6;"); // Add Tombstone
-    mediumZoom('.article-content img'); // Image Zoom
-    mediumZoom('.image-in-post > img'); // Image Zoom
-    mediumZoom('.featured-image > img'); // Image Zoom
+
+    mediumZoom('.article-content img:not(.no-zoom), .image-in-post > img:not(.no-zoom), .featured-image > img:not(.no-zoom)', {
+        background: 'rgb(0,0,0,0.75)',
+        margin: 30
+
+    }); // Image Zoom
 });
 
 // Advanced Search Popup
