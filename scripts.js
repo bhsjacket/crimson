@@ -29,6 +29,7 @@ $(document).ready(function() {
     var donationToggle = false;
     var sectionsToggle = false;
     var searchToggle = false;
+    var newsletterToggle = false;
 
     $('.sections-toggle').click(function() {
         if ($(window).width() > 925) {
@@ -44,6 +45,12 @@ $(document).ready(function() {
                     sectionsToggle = true;
                     donationToggle = false;
                 });
+            } else if (newsletterToggle == true) {
+                $('.newsletter-dropdown').fadeOut('fast', function() {
+                    $('.sections-dropdown').fadeIn('fast');
+                    sectionsToggle = true;
+                    newsletterToggle = false;
+                })
             } else {
                 $('.sections-dropdown').slideToggle();
                 sectionsToggle = !sectionsToggle;
@@ -67,6 +74,12 @@ $(document).ready(function() {
                 searchToggle = true;
                 donationToggle = false;
             });
+        } else if (newsletterToggle == true) {
+            $('.newsletter-dropdown').fadeOut('fast', function() {
+                $('.search-dropdown').fadeIn('fast');
+                searchToggle = true;
+                newsletterToggle = false;
+            })
         } else {
             $('.search-dropdown').slideToggle();
             searchToggle = !searchToggle;
@@ -88,6 +101,12 @@ $(document).ready(function() {
                 });
                 donationToggle = true;
                 searchToggle = false;
+            } else if (newsletterToggle == true) {
+                $('.newsletter-dropdown').fadeOut('fast', function() {
+                    $('.donation-dropdown').fadeIn('fast');
+                });
+                donationToggle = true;
+                newsletterToggle = false;
             } else {
                 $('.donation-dropdown').slideToggle();
                 donationToggle = !donationToggle;
@@ -95,6 +114,33 @@ $(document).ready(function() {
         } else {
             window.location.href = "//berkeleyhighjacket.com/donate";
         }
+    });
+
+    $('.newsletter-toggle').click(function() {
+        $('.mobile-menu').toggleClass('search-expanded');
+        if (sectionsToggle == true) {
+            $('.sections-dropdown').fadeOut('fast', function() {
+                $('.newsletter-dropdown').fadeIn('fast');
+                newsletterToggle = true;
+                sectionsToggle = false;
+            });
+        } else if (donationToggle == true) {
+            $('.donation-dropdown').fadeOut('fast', function() {
+                $('.newsletter-dropdown').fadeIn('fast');
+                newsletterToggle = true;
+                donationToggle = false;
+            });
+        } else if (searchToggle == true) {
+            $('.search-dropdown').fadeOut('fast', function() {
+                $('.newsletter-dropdown').fadeIn('fast');
+                newsletterToggle = true;
+                searchToggle = false;
+            })
+        } else {
+            $('.newsletter-dropdown').slideToggle();
+            newsletterToggle = !newsletterToggle;
+        }
+        $('.email-field').focus();
     });
 
     $(document).scroll(function() {
@@ -157,9 +203,9 @@ $(document).ready(function() {
         }
 
         if ($(window).width() - progress < 200) {
-            if(getCookie('article_trigger') !== 'true') {
-                if($(window).width() > 1155) {
-                    if (!donationToggle && !sectionsToggle && !searchToggle) {
+            if($(window).width() > 1155) {
+                if (!donationToggle && !sectionsToggle && !searchToggle && !newsletterToggle) {
+                    if(getCookie('article_trigger') !== 'true') {
                         var now = new Date();
                         var time = now.getTime();
                         time += 3600 * 1000;
@@ -170,6 +216,15 @@ $(document).ready(function() {
                         $('.donation-dropdown .fa-clock').removeClass('fa-newspaper');
                         $('.donation-dropdown').slideDown();
                         donationToggle = true;
+                        $('.progress-bar').fadeOut('fast');
+                    } else if(getCookie('newsletter_trigger') !== 'true' && $('.donation-dropdown i').hasClass('fa-newspaper')) {
+                        var now = new Date();
+                        var time = now.getTime();
+                        time += 3600 * 1000;
+                        now.setTime(time);
+                        document.cookie = 'newsletter_trigger=true;expires=' + now.toUTCString() + '; path=/';
+                        $('.newsletter-dropdown').slideDown();
+                        newsletterToggle = true;
                         $('.progress-bar').fadeOut('fast');
                     }
                 }

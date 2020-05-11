@@ -23,6 +23,19 @@
             </form>
         </div>
     </div>
+    <div class="newsletter-dropdown">
+        <div class="newsletter-dropdown-inner">
+            <form class="newsletter-dropdown-form" action="https://bhsjacket.us20.list-manage.com/subscribe/post" method="POST" target="_blank">
+                <input type="hidden" name="u" value="cd770a9475cd688fc6dcac8f1">
+                <input type="hidden" name="id" value="43ce4620e7">
+                <input type="email" class="email-field" autocapitalize="off" autocorrect="off" name="MERGE0" id="MERGE0" placeholder="Type your email address to receive an occasional email about our best stories...">
+                <div style="position: absolute; left: -5000px;" aria-hidden="true">
+                    <input type="text" name="b_cd770a9475cd688fc6dcac8f1_43ce4620e7" tabindex="-1" value="">
+                </div>
+                <input type="submit" value="Subscribe" class="subscribe-button">
+            </form>
+        </div>
+    </div>
     <div class="sections-dropdown">
         <div class="sections-dropdown-inner">
             <ul>
@@ -84,7 +97,7 @@
             </div>
             <div class="header-right">
                 <ul>
-                    <li><a href="/subscribe">Subscribe</a></li>
+                    <li class="newsletter-toggle"><a style="cursor:pointer">Newsletter</a></li>
                     <li class="header-button">Support Us</li>
                     <li class="search-toggle search-toggle-mobile"><span>Search</span><i class="far fa-search"></i></li>
                     <li class="search-toggle"><i class="far fa-search"></i></li>
@@ -107,7 +120,7 @@
             </div>
             <div class="sticky-sections-right">
                 <ul>
-                    <li><a href="/subscribe">Subscribe</a></li>
+                    <li class="newsletter-toggle"><a style="cursor:pointer">Newsletter</a></li>
                     <li class="header-button">Support Us</li>
                     <li class="search-toggle"><i class="far fa-search"></i></li>
                 </ul>

@@ -41,7 +41,6 @@ function init_actions() {
 	
 	remove_image_size('1536x1536');
 	remove_image_size('2048x2048');
-	add_filter( ‘big_image_size_threshold’, ‘__return_false’ );
 }
 add_action( 'after_setup_theme', 'init_actions' );
 

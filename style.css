@@ -255,6 +255,49 @@ header.site-header .progress-bar {
 }
 
 
+.newsletter-dropdown {
+    display: none;
+    border-bottom: solid 1px #e7e7e7;
+}
+
+.newsletter-dropdown-inner {
+    max-width: 1140px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    height: 100%;
+}
+
+.newsletter-dropdown-form {
+    width: 100%;
+    display: flex;
+}
+
+.email-field {
+    width: 100%;
+    border: none;
+    font-size: 16px;
+    font-family: 'PT Serif', serif;
+    color: gray;
+    outline: none;
+}
+
+.subscribe-button {
+    background-color: #800000;
+    padding: 10px 15px;
+    color: white;
+    cursor: pointer;
+    font-family: 'PT Serif', serif;
+    font-size: 16px;
+    border: none;
+    outline: none;
+}
+
+.subscribe-button:hover {
+    background-color: #5A0000;
+}
+
+
 .sections-dropdown {
     border-bottom: solid 1px #E7E7E7;
     display: none;
