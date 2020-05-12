@@ -852,6 +852,26 @@ a.link:hover,
     line-height: 1.5em;
 }
 
+.article-content > h2 {
+    font-family: 'Noe Display', serif;
+    font-weight: normal;
+    font-size: 32px;
+}
+
+.article-content > h3 {
+    font-family: 'PT Sans', sans-serif;
+    font-weight: normal;
+    font-size: 24px;
+    border-bottom: solid 1px #e7e7e7;
+}
+
+.article-content > h4 {
+    font-family: 'PT Serif', serif;
+    font-weight: bold;
+    font-size: 24px;
+    color: gray;
+}
+
 /* Age Warning */
 .old-article {
     background-color: #800000;

@@ -9,7 +9,7 @@
         <?php get_template_part('php/posts/massive/featured-image'); ?>
     <?php } ?>
     <?php get_template_part('php/posts/universal/header'); ?>
-    <?php if( in_array( $template, array('single', 'slider', 'video', 'wide', 'widest') ) ) { ?>
+    <?php if( in_array( $template, array('single', 'slider', 'video', 'wider', 'widest') ) ) { ?>
         <?php get_template_part('php/posts/' . get_field('post_template') . '/featured-image'); // Get featured image based on theme folder?>
     <?php } ?>
 </header>

@@ -84,12 +84,12 @@ function crimson_thumbnail_upscale( $default, $orig_w, $orig_h, $new_w, $new_h, 
 add_filter( 'image_resize_dimensions', 'crimson_thumbnail_upscale', 10, 6 );
 // End Upscale Cropping
 
-// Co-Authors Plus Capabilities
+// Co-Authors Plus
 function cap_callback() {
     return 'read'; // Add all users to dropdown
 }
 add_filter('coauthors_edit_author_cap', 'cap_callback');
-// End Co-Authors Plus Capabilities
+// End Co-Authors Plus
 
 // Include Shortcodes
 include ('php/shortcodes/shortcode-functions.php');

@@ -224,6 +224,7 @@ $(document).ready(function() {
                         now.setTime(time);
                         document.cookie = 'newsletter_trigger=true;expires=' + now.toUTCString() + '; path=/';
                         $('.newsletter-dropdown').slideDown();
+                        $('.email-field').focus();
                         newsletterToggle = true;
                         $('.progress-bar').fadeOut('fast');
                     }
