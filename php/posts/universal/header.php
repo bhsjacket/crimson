@@ -5,13 +5,20 @@
 <?php } ?>
 <h1 class="article-title"><?php echo wp_kses_post( get_the_title() ); ?></h1>
 <!-- Byline & Sharing -->
+<?php
+if(!empty(get_field('additional_options'))) {
+    $additional_options = get_field('additional_options');
+} else {
+    $additional_options = array('');
+}
+?>
 <div class="post-meta">
-    <?php if(!in_array('hide_byline', get_field('additional_options'))) { ?>
+    <?php if(!in_array('hide_byline', $additional_options)) { ?>
     <?php get_template_part('php/posts/universal/byline'); ?>
     <?php } ?>
-    <?php if(!in_array('date_sharing', get_field('additional_options'))) { ?>
+    <?php if(!in_array('date_sharing', $additional_options)) { ?>
     <div class="sharing">
-        <?php if(!in_array('sharing', get_field('additional_options'))) { ?>
+        <?php if(!in_array('sharing', $additional_options)) { ?>
         <p class="post-date"><?php echo get_the_date('F j, Y'); ?></p>
         <?php } else { ?>
         <a title="Share on Facebook" href="https://www.facebook.com/sharer/sharer.php?u=<?php echo get_permalink(); ?>"><i class="fab fa-facebook"></i></a>

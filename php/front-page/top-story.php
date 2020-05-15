@@ -35,7 +35,7 @@ $query = new WP_Query( $args ); ?>
 <section style="background-color: <?php echo $display['background-color']; ?>" class="top-story full-width <?php echo $display['pattern']; ?> <?php echo $display['image-position']; ?>">
 
 <?php if ( $query->have_posts() ) { while ( $query->have_posts() ) { $query->the_post(); ?>
-
+    
     <a href="<?php echo get_permalink(); ?>">
         <div class="top-story-inner contain <?php echo $display['align']; ?>-align">
             <div class="top-story-headline">

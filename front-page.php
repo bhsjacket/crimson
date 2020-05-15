@@ -79,7 +79,26 @@ if( have_rows('modules', 'option') ):
             ));
             get_template_part('php/front-page/five');
 
-        elseif(get_row_layout() == 'columnists'):
+        elseif(get_row_layout() == 'alt_top_story'): // Alternative Top Story
+            if(get_sub_field('content') == 'front-feature') {
+                $front_feature = true;
+                $category = 'news';
+            } else { if(get_sub_field('content') == 'category') {
+                $front_feature = false;
+                $category = get_sub_field('category')->slug;
+            }}
+            set_query_var('display-info', array(
+                'category' => $category,
+                'live_icon' => get_sub_field('live_icon'),
+                'offset' => get_sub_field('offset'),
+                'font-feature' => $front_feature,
+                'align' => get_sub_field('align'),
+                'align_text' => get_sub_field('align_text'),
+                'kicker_color' => get_sub_field('kicker_color'),
+            ));
+            get_template_part('php/front-page/alt-top-story');
+
+        elseif(get_row_layout() == 'columnists'): // Columnists
             get_template_part('php/front-page/columnists');
 
         elseif(get_row_layout() == 'title'): // Title

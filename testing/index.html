@@ -10,107 +10,20 @@
 body { margin: 0; }
 .wider { max-width: 1140px; margin: 0 auto; }
 * { -webkit-font-smoothing: antialiased; }
+section { padding: 60px 0; }
 </style>
 
 <body>
 
-<section class="filler"></section>
-
-<section class="small-slider wider">
-    <div class="small-swiper-container">
-        <div class="swiper-wrapper">
-            <div class="swiper-slide">
-                <a href="">
-                    <img src="https://picsum.photos/600/400">
-                    <div class="small-slider-title">
-                        <h2>Berkeley High MCSA Hosts First Mixed-Race Speaker Series</h2>
-                        <span>By John Doe</span>
-                    </div>
-                </a>
-            </div>
-            <div class="swiper-slide">
-                <a href="">
-                    <img src="https://picsum.photos/600/400">
-                    <div class="small-slider-title">
-                        <h2>Berkeley High MCSA Hosts First Mixed-Race Speaker Series</h2>
-                        <span>By John Doe</span>
-                    </div>
-                </a>
-            </div>
-            <div class="swiper-slide">
-                <a href="">
-                    <img src="https://picsum.photos/600/400">
-                    <div class="small-slider-title">
-                        <h2>Berkeley High MCSA Hosts First Mixed-Race Speaker Series</h2>
-                        <span>By John Doe</span>
-                    </div>
-                </a>
-            </div>
-            <div class="swiper-slide">
-                <a href="">
-                    <img src="https://picsum.photos/600/400">
-                    <div class="small-slider-title">
-                        <h2>Berkeley High MCSA Hosts First Mixed-Race Speaker Series</h2>
-                        <span>By John Doe</span>
-                    </div>
-                </a>
-            </div>
-            <div class="swiper-slide">
-                <a href="">
-                    <img src="https://picsum.photos/600/400">
-                    <div class="small-slider-title">
-                        <h2>Berkeley High MCSA Hosts First Mixed-Race Speaker Series</h2>
-                        <span>By John Doe</span>
-                    </div>
-                </a>
-            </div>
-            <div class="swiper-slide">
-                <a href="">
-                    <img src="https://picsum.photos/600/400">
-                    <div class="small-slider-title">
-                        <h2>Berkeley High MCSA Hosts First Mixed-Race Speaker Series</h2>
-                        <span>By John Doe</span>
-                    </div>
-                </a>
-            </div>
-        </div>
-    </div>
-    <div class="small-nav">
-        <div class="small-nav-outer-prev">
-            <i class="far fa-arrow-left small-nav-prev"></i>
-        </div>
-        <div class="small-nav-dots"></div>
-        <div class="small-nav-outer-next">
-            <i class="far fa-arrow-right small-nav-next"></i>
-        </div>
-    </div>
+<section class="min-top-story wider">
+    <a href="" class="min-top-story-right">
+        <img src="https://berkeleyhighjacket.com/wp-content/uploads/2020/02/Sophia-Brown-The-City-of-Souls-1-1200x600.jpg">
+    </a>
+    <a href="" class="min-top-story-left">
+        <span class="min-section">Berkeley High School</span>
+        <h2 class="min-headline">Principal Erin Schweng Bids Farewell to Berkeley High School After 3 Years</h2>
+        <p class="min-excerpt">"This is something that I think about every single year since I became principal,” said Schweng. “I always give myself permission to think about whether or not I want to do it one more year because it’s such a difficult job and because it requires a lot."</p>
+    </a>
 </section>
-
-<section class="filler"></section>
-
-<script>
-    $(document).ready(function(){
-        var smallSlider = new Swiper('.small-swiper-container', {
-            spaceBetween: 15,
-            slidesPerView: 1,
-            grabCursor: true,
-            pagination: {
-                el: '.small-nav-dots',
-            },
-            navigation: {
-                nextEl: '.small-nav-next',
-                prevEl: '.small-nav-prev',
-            },
-            breakpoints: {
-                1000: {
-                    slidesPerView: 3,
-                },
-                775: {
-                    slidesPerView: 2,
-                },
-            },
-        });
-    })
-</script>
 
 </body>
