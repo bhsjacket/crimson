@@ -856,6 +856,7 @@ a.link:hover,
     font-family: 'Noe Display', serif;
     font-weight: normal;
     font-size: 32px;
+    padding-top: 30px;
 }
 
 .article-content > h3 {
@@ -863,6 +864,7 @@ a.link:hover,
     font-weight: normal;
     font-size: 24px;
     border-bottom: solid 1px #e7e7e7;
+    padding-top: 30px;
 }
 
 .article-content > h4 {
@@ -870,6 +872,7 @@ a.link:hover,
     font-weight: bold;
     font-size: 24px;
     color: gray;
+    padding-top: 30px;
 }
 
 /* Age Warning */
