@@ -79,6 +79,12 @@ if( have_rows('modules', 'option') ):
             ));
             get_template_part('php/front-page/five');
 
+        elseif(get_row_layout() == 'specific_posts'):
+            set_query_var('display-info', array(
+                'posts' => get_sub_field('posts')
+            ));
+            get_template_part('php/front-page/specific_posts');
+
         elseif(get_row_layout() == 'alt_top_story'): // Alternative Top Story
             if(get_sub_field('content') == 'front-feature') {
                 $front_feature = true;

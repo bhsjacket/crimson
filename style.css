@@ -10,8 +10,13 @@ License URI: https://www.copyright.gov/title17/
 Text Domain: crimson
 */
 
+html {
+    background-color: #800000;
+}
+
 body {
     margin: 0;
+    background-color: white;
 }
 
 * {
