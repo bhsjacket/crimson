@@ -88,7 +88,6 @@ if( have_rows('modules', 'option') ):
         elseif(get_row_layout() == 'alt_top_story'): // Alternative Top Story
             if(get_sub_field('content') == 'front-feature') {
                 $front_feature = true;
-                $category = 'news';
             } else { if(get_sub_field('content') == 'category') {
                 $front_feature = false;
                 $category = get_sub_field('category')->slug;
@@ -97,7 +96,7 @@ if( have_rows('modules', 'option') ):
                 'category' => $category,
                 'live_icon' => get_sub_field('live_icon'),
                 'offset' => get_sub_field('offset'),
-                'font-feature' => $front_feature,
+                'front-feature' => $front_feature,
                 'align' => get_sub_field('align'),
                 'align_text' => get_sub_field('align_text'),
                 'kicker_color' => get_sub_field('kicker_color'),
