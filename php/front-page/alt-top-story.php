@@ -35,7 +35,7 @@ $query = new WP_Query( $args ); ?>
 
 <?php if ( $query->have_posts() ) { while ( $query->have_posts() ) { $query->the_post(); ?>
 
-<section class="min-top-story wider<?php if($display['align'] == 'right') { echo 'right-align'; } ?>">
+<section class="min-top-story wider<?php if($display['align'] == 'right') { echo ' right-align'; } ?>">
     <a href="<?php echo get_permalink(); ?>" class="min-top-story-right">
         <img src="<?php echo get_the_post_thumbnail_url(get_the_ID(), 'six-three'); ?>">
     </a>
