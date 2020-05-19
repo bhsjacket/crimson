@@ -51,7 +51,7 @@ $query = new WP_Query( $args ); ?>
 
 <div class="glance-column glance-sports">
     <div class="glance-row">
-        <h2 class="sport"><a target="_blank" href="<?php echo $data['link']; ?>"><?php echo $data['sport']; ?></a></h2>
+        <h2 class="sport"><a href="https://berkeleyhighjacket.com/?s=<?php echo str_replace(' ', '+', $data['sport']); ?>"><?php echo $data['sport']; ?></a></h2>
         <span class="date"><?php echo str_replace(' ', '&nbsp;', $data['date']); ?></span>
     </div>
     <div class="glance-row<?php if($data['home_outcome'] == 'win') { echo ' winner'; } ?>">
