@@ -116,6 +116,12 @@ if( have_rows('modules', 'option') ):
             ));
             get_template_part('php/front-page/title');
 
+        elseif(get_row_layout() == 'glance'): // At a Glance
+            set_query_var('display-info', array(
+                'sports' => get_sub_field('sports'),
+                'podcast' => get_sub_field('podcast')
+            ));
+
         elseif(get_row_layout() == 'shattered'): // Shattered/Three-Six Grid
             if(!empty(get_sub_field('pattern'))) {
                 if(get_sub_field('pattern_color') == 'light') {

@@ -1,0 +1,16 @@
+.three {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 30px;
+}
+
+.three img {
+    width: 100%;
+}
+
+.three h2 {
+    margin: 10px 0;
+    font-family: 'Noe Display', serif;
+    font-weight: normal;
+    font-size: 24px;
+}
