@@ -121,6 +121,7 @@ if( have_rows('modules', 'option') ):
                 'sports' => get_sub_field('sports'),
                 'podcast' => get_sub_field('podcast')
             ));
+            get_template_part('php/front-page/glance');
 
         elseif(get_row_layout() == 'shattered'): // Shattered/Three-Six Grid
             if(!empty(get_sub_field('pattern'))) {

@@ -37,7 +37,7 @@ $query = new WP_Query( $args ); ?>
 <section class="glance wider">
 <?php if ( $query->have_posts() ) { while ( $query->have_posts() ) { $query->the_post(); ?>
 <a href="<?php echo get_permalink(); ?>" class="glance-column">
-    <img src='<?php echo get_the_post_thumbnail_url('thumbnail') ?>'>
+    <img src='<?php echo wp_get_attachment_image_src(get_post_thumbnail_id(), "thumbnail")[0]; ?>'>
     <div class="glance-headline">
         <h2><span><?php echo get_field('kicker'); ?>: </span><?php echo get_field('short_title'); ?></h2>
     </div>
@@ -51,7 +51,7 @@ $query = new WP_Query( $args ); ?>
 
 <div class="glance-column glance-sports">
     <div class="glance-row">
-        <h2 class="sport"><a href="<?php echo $data['link']; ?>"><?php echo $data['sport']; ?></a></h2>
+        <h2 class="sport"><a target="_blank" href="<?php echo $data['link']; ?>"><?php echo $data['sport']; ?></a></h2>
         <span class="date"><?php echo str_replace(' ', '&nbsp;', $data['date']); ?></span>
     </div>
     <div class="glance-row<?php if($data['home_outcome'] == 'win') { echo ' winner'; } ?>">
