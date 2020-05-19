@@ -854,3 +854,110 @@
     }
 }
 /* END SPECIFIC POSTS */
+
+/* AT A GLANCE */
+.glance {
+    display: flex;
+    padding: 0 15px;
+}
+
+.glance-column {
+    width: 25%;
+    padding: 0 7.5px;
+    display: grid;
+    grid-template-columns: 60px 1fr;
+    grid-gap: 15px;
+    text-decoration: none;
+    color: black;
+}
+
+.glance-column:not(.glance-sports) {
+    align-items: center;
+}
+
+.glance-column:first-child {
+    padding-left: 0;
+}
+
+.glance img {
+    width: 100%;
+    display: block;
+}
+
+.glance span {
+    font-family: 'PT Serif', serif;
+    color: #666666;
+    font-weight: normal;
+}
+
+.glance h2 {
+    margin: 0;
+    font-family: 'PT Serif', serif;
+    font-weight: normal;
+    font-size: 16px;
+}
+
+.glance-sports {
+    display: flex;
+    flex-direction: column;
+    border: solid 1px #e7e7e7;
+    padding: 10px;
+}
+
+.glance-row:first-child {
+    border-bottom: solid 1px #e7e7e7;
+    margin-bottom: 2.5px;
+    padding-bottom: 2.5px;
+}
+
+.glance-row {
+    display: flex;
+}
+
+.sport,
+.team {
+    width: 100%;
+}
+
+h2.sport {
+    font-weight: bold;
+}
+
+h2.sport:hover:after {
+    content: ' ↗';
+    transition: opacity 0.2s;
+    font-family: BlinkMacSystemFont;
+    color: #800000;
+}
+
+h2.sport a {
+    color: black;
+    text-decoration: none;
+}
+
+h2.sport a:hover {
+    color: #800000;
+}
+
+.date,
+.score {
+    text-align: right;
+    display: block;
+    word-break: none;
+}
+
+span.date {
+    font-family: 'PT Sans', sans-serif;
+    font-weight: normal;
+}
+
+.winner {
+    color: #3f893b;
+}
+
+@media all and (max-width: 1000px) {
+    .glance {
+        display: none;
+    }
+}
+/* END AT A GLANCE */
