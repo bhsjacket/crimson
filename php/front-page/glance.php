@@ -44,10 +44,31 @@ $query = new WP_Query( $args ); ?>
 </a>
 <?php }} wp_reset_postdata(); ?>
 
+<?php if($display['podcast'] == true) { ?>
+<?php
+$title = simplexml_load_file('https://anchor.fm/s/eafe278/podcast/rss');
+$title = $title->channel->item[0]->title;
+?>
+
+<a href="/podcast" class="glance-column glance-podcast">
+    <img src='<?php echo get_template_directory_uri(); ?>/images/podcast.png'>
+    <div class="glance-headline">
+        <h2><span>Podcast: </span><?php echo $title; ?></h2>
+    </div>
+</a>
+<?php } ?>
+
 <?php if($display['sports'] == true) {
     $json = file_get_contents('http://jeromepaulos.com/bhsjacket/glance/sports_api.php');
     $data = json_decode($json, true);
 ?>
+
+<style>
+.glance {
+    margin-top: 15px!important;
+    margin-bottom: -15px!important;
+}
+</style>
 
 <div class="glance-column glance-sports">
     <div class="glance-row">
@@ -62,22 +83,8 @@ $query = new WP_Query( $args ); ?>
         <h2 class="team"><?php echo $data['away_name']; ?></h2>
         <h2 class="score"><?php echo $data['away_score']; ?></h2>
     </div>
+    <span class="updated-msg">Updated Hourly</span>
 </div>
-<?php } ?>
-
-<?php if($display['podcast'] == true) { ?>
-
-<?php
-$title = simplexml_load_file('https://anchor.fm/s/eafe278/podcast/rss');
-$title = $title->channel->item[0]->title;
-?>
-
-<a href="/podcast" class="glance-column glance-podcast">
-    <img src='<?php echo get_template_directory_uri(); ?>/images/podcast.png'>
-    <div class="glance-headline">
-        <h2><span>Podcast: </span><?php echo $title; ?></h2>
-    </div>
-</a>
 <?php } ?>
 
 </section>

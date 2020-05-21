@@ -18,7 +18,7 @@ if($display['front-feature'] !== true) {
 } else { if($display['front-feature'] == true) {
     $args = array(
         'posts_per_page' => 1,
-        'post_status' => array('post'),
+        'post_status' => array('publish'),
         'offset' => $offset,
         'tax_query' => array(
             array(

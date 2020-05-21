@@ -1,4 +1,5 @@
-.block-editor-page .edit-post-sidebar .components-panel .components-panel__body,
+.block-editor-page .edit-post-sidebar .components-panel .components-panel__body:nth-child(n+3),
+.edit-post-post-status .components-panel__row:nth-child(n+4),
 #acf-group_acfe_author,
 .block-editor-page .acf-gallery-sort,
 .editor-post-publish-panel__prepublish .components-panel__body {

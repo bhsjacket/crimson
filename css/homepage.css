@@ -886,7 +886,7 @@
 
 .glance span {
     font-family: 'PT Serif', serif;
-    color: #666666;
+    color: gray;
     font-weight: normal;
 }
 
@@ -902,6 +902,7 @@
     flex-direction: column;
     border: solid 1px #e7e7e7;
     padding: 10px;
+    position: relative;
 }
 
 .glance-row:first-child {
@@ -918,6 +919,23 @@
 .team {
     width: 100%;
 }
+
+.updated-msg {
+    opacity: 0;
+    transition: opacity 0.2s;
+    font-size: 9px;
+    font-family: 'PT Sans', sans-serif!important;
+    text-transform: uppercase;
+    position: absolute;
+    bottom: -16px;
+    right: 0;
+}
+
+.glance-sports:hover .updated-msg {
+    opacity: 1;
+    transition: opacity 0.2s;
+}
+
 
 h2.sport {
     font-weight: bold;

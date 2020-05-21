@@ -69,10 +69,6 @@
     border: none;
 }
 
-.advanced-embed * {
-    max-width: 100%;
-}
-
 .wide {
     max-width: 800px;
     width: 100%;
