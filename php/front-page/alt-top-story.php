@@ -20,6 +20,7 @@ if($display['front-feature'] !== true) {
         'posts_per_page' => 1,
         'post_status' => array('publish'),
         'offset' => $offset,
+        'ignore_sticky_posts' => true,
         'tax_query' => array(
             array(
                 'taxonomy' => 'syndication',

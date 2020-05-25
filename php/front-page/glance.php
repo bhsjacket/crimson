@@ -59,8 +59,18 @@ $title = $title->channel->item[0]->title;
 <?php } ?>
 
 <?php if($display['sports'] == true) {
-    $json = file_get_contents('http://jeromepaulos.com/bhsjacket/glance/sports_api.php');
-    $data = json_decode($json, true);
+    // $json = file_get_contents('http://jeromepaulos.com/bhsjacket/glance/sports_api.php');
+    $data = file_get_contents('https://jeromepaulos.com/bhsjacket/coronavirus/data.php?data=berkeley');
+    $data = json_decode($data, true);
+    $data = array_reverse($data);
+    $data = $data[0];
+    $date = date('M j', strtotime($data['date']));
+    $date = str_replace(' ', '&nbsp;', $date);
+
+    $ac_data = file_get_contents('https://jeromepaulos.com/bhsjacket/coronavirus/data.php?data=alameda');
+    $ac_data = json_decode($ac_data, true);
+    $ac_data = array_reverse($ac_data);
+    $ac_data = $ac_data[0]['attributes'];
 ?>
 
 <style>
@@ -68,23 +78,59 @@ $title = $title->channel->item[0]->title;
     margin-top: 15px!important;
     margin-bottom: -15px!important;
 }
+[aria-label][data-balloon-pos]:after {
+    font-family: 'PT Serif', serif!important;
+    font-size: 13px!important;
+}
 </style>
 
-<div class="glance-column glance-sports">
-    <div class="glance-row">
-        <h2 class="sport"><a href="https://berkeleyhighjacket.com/?s=<?php echo str_replace(' ', '+', $data['sport']); ?>"><?php echo $data['sport']; ?></a></h2>
-        <span class="date"><?php echo str_replace(' ', '&nbsp;', $data['date']); ?></span>
+<?php if(1 > 2) { ?>
+    <div class="glance-column glance-sports">
+        <div class="glance-row">
+            <h2 class="sport"><a href="https://berkeleyhighjacket.com/?s=<?php echo str_replace(' ', '+', $data['sport']); ?>"><?php echo $data['sport']; ?></a></h2>
+            <span class="date"><?php echo str_replace(' ', '&nbsp;', $data['date']); ?></span>
+        </div>
+        <div class="glance-row<?php if($data['home_outcome'] == 'win') { echo ' winner'; } ?>">
+            <h2 class="team">Berkeley</h2>
+            <h2 class="score"><?php echo $data['home_score']; ?></h2>
+        </div>
+        <div class="glance-row<?php if($data['home_outcome'] == 'loss') { echo ' winner'; } ?>">
+            <h2 class="team"><?php echo $data['away_name']; ?></h2>
+            <h2 class="score"><?php echo $data['away_score']; ?></h2>
+        </div>
+        <span class="updated-msg">Updated Hourly</span>
     </div>
-    <div class="glance-row<?php if($data['home_outcome'] == 'win') { echo ' winner'; } ?>">
-        <h2 class="team">Berkeley</h2>
-        <h2 class="score"><?php echo $data['home_score']; ?></h2>
+<?php } ?>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/balloon-css/1.0.4/balloon.min.css">
+<style>
+        .glance-sports {
+            border: none!important;
+        }
+        .glance-sports span,
+        h2.sport a {
+            color: white!important;
+        }
+        .glance-row {
+            border-color: #ffffff69!important;
+        }
+    </style>
+<div class="glance-column glance-sports" style="background-color:#800000;color:white;">
+    <div class="glance-row">
+        <h2 class="sport" aria-label="More data and visuzalitions" data-balloon-pos="down-left"><a href="https://berkeleyhighjacket.com/2020/multimedia/live-coronavirus-data/">Coronavirus Statistics</a></h2>
+        <span class="date" aria-label="Latest available data" data-balloon-pos="down-right"><?php echo $date; ?></span>
+    </div>
+    <div class="glance-row">
+        <h2 class="team">Berkeley Total</h2>
+        <h2 class="score" style="width:50%"><?php echo number_format($data['bklhj_cumulcases']); ?>&nbsp;<span aria-label="New cases since yesterday" data-balloon-pos="down-right">(+&nbsp;<?php echo number_format($data['bklhj_newcases']); ?>)</span></h2>
     </div>
     <div class="glance-row<?php if($data['home_outcome'] == 'loss') { echo ' winner'; } ?>">
-        <h2 class="team"><?php echo $data['away_name']; ?></h2>
-        <h2 class="score"><?php echo $data['away_score']; ?></h2>
+        <h2 class="team">Alameda County Total</h2>
+        <h2 class="score" style="width:50%"><?php echo number_format($ac_data['AC_CumulCases']); ?>&nbsp;<span aria-label="New cases since yesterday" data-balloon-pos="down-right">(+&nbsp;<?php echo number_format($ac_data['AC_Cases']); ?>)</span></h2>
     </div>
-    <span class="updated-msg">Updated Hourly</span>
+    <span class="updated-msg">Updated Twice Daily</span>
 </div>
+
 <?php } ?>
 
 </section>

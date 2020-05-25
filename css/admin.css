@@ -2,7 +2,8 @@
 .edit-post-post-status .components-panel__row:nth-child(n+4),
 #acf-group_acfe_author,
 .block-editor-page .acf-gallery-sort,
-.editor-post-publish-panel__prepublish .components-panel__body {
+.editor-post-publish-panel__prepublish .components-panel__body,
+.block-editor-block-inspector .components-panel__body-toggle {
     display: none!important;
 }
 .block-editor-page .is-side .postbox-container {

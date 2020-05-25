@@ -29,7 +29,8 @@ $(document).scroll(function(){
 <?php // Top Story
 $args_top_story = array(
 	'post_type' => array('post'),
-	'post_status' => array('publish'),
+    'post_status' => array('publish'),
+    'ignore_sticky_posts' => true,
 	'tax_query' => array(
 		array(
 			'taxonomy' => 'syndication',

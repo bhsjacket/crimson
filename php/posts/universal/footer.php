@@ -3,7 +3,6 @@ $args_query = array(
     'post__not_in' => array($post->ID),
     'post_type' => array('post'),
     'post_status' => array('publish'),
-    'category_name' => get_the_category()[0]->name,
     'posts_per_page' => 3,
     'offset' => $offset,
     'meta_key' => '_thumbnail_id',

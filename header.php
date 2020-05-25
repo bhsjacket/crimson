@@ -63,18 +63,14 @@
             </div>
             <div class="donation-dropdown-right">
                 <div class="donation-dropdown-form">
-                    <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
-                        <input type="hidden" name="cmd" value="_donations" />
-                        <input type="hidden" name="business" value="bhsasb@berkeley.net" />
-                        <input type="hidden" name="item_name" value="Donation to the Berkeley High Jacket newspaper" />
-                        <input type="hidden" name="currency_code" value="USD" />
-                        <input type="hidden" name="return" value="<?php echo get_site_url() . $_SERVER['REQUEST_URI']; ?>?donation=completed" />
+                    <form action="https://jeromepaulos.com/bhsjacket/donation/donation.php" method="post" target="_blank">
+                        <input type="hidden" name="page" value="<?php echo get_site_url() . $_SERVER['REQUEST_URI']; ?>">
                         <select name="amount">
                             <option value="10.00">$10</option>
                             <option value="25.00" selected>$25</option>
                             <option value="50.00">$50</option>
                             <option value="100.00">$100</option>
-                            <option value>Other</option>
+                            <option value="Other">Other</option>
                         </select>
                         <input type="submit" value="Support the Jacket">
                     </form>
