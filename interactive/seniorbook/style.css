@@ -1,5 +1,22 @@
+@media all and (orientation: portrait) {
+    .responses {
+        column-count: 2!important;
+    }
+    .form {
+        width: 100%!important;
+    }
+    .seniorbook .form {
+        width: fit-content!important;
+    }
+}
+
 .seniorbook {
     padding: 15px 15px 0 15px;
+}
+
+.seniorbook.wider {
+    max-width: 1140px;
+    margin: 0 auto;
 }
 
 .responses {
@@ -51,16 +68,6 @@
     transition: opacity 0.2s;
 }
 
-@media all and (orientation: portrait) {
-    .responses {
-        column-count: 2;
-    }
-    .form,
-    #message {
-        width: 100%!important;
-    }
-}
-
 .orange,
 .form .colors label[for="orange"] {
     background-color: #fcece7!important;
@@ -81,40 +88,47 @@
     background-color: #e7f2fc!important;
 }
 
-.purple,
-.form .colors label[for="purple"] {
+.seniorbook .purple,
+.seniorbook .form .colors label[for="purple"] {
     background-color: #fce7fc!important;
 }
 
-.pink,
-.form .colors label[for="pink"] {
+.seniorbook .pink,
+.seniorbook .form .colors label[for="pink"] {
     background-color: #fce7f0!important;
 }
 
-.gray,
-.form .colors label[for="gray"] {
+.seniorbook .gray,
+.seniorbook .form .colors label[for="gray"] {
     background-color: #e7e7e7!important;
 }
 
 /* FORM */
 
-.form {
-    width: fit-content;
-    padding-bottom: 15px;
-    margin: 0 auto;
+@media all and (orientation: landscape) {
+    .seniorbook .form {
+        width: calc(calc(1140px / 3) - 15px)!important;
+    }
 }
 
-.form .colors .color {
+.seniorbook .form {
+    margin: 0 auto!important;
+    display: none;
+    padding-bottom: 15px!important;
+}
+
+.seniorbook .form .colors .color {
     display: none;
 }
 
-.form .colors {
+.seniorbook .form .colors {
     margin-top: 20px;
+    margin-bottom: 20px;
     display: flex;
     justify-content: space-between;
 }
 
-.form .colors label {
+.seniorbook .form .colors label {
     display: inline-block;
     filter: brightness(0.85) saturate(3);
     width: 15px;
@@ -124,31 +138,43 @@
     transition: all 0.2s;
 }
 
-.form .colors label:hover {
+.seniorbook .form .colors label:hover {
     transition: transform 0.2s;
     transform: scale(1.5);
 }
 
-.form .colors .color:checked + label {
+.seniorbook .form .colors .color:checked + label {
     transition: all 0.2s;
     transform: scale(2);
     filter: none;
 }
 
-#message {
+.seniorbook .form .field {
+    background-color: #e7e7e7;
+    font-family: 'PT Serif', serif;
+    border: none;
+    padding: 5px;
+    font-size: 16px;
+    width: 100%;
+    outline: none;
+    margin-bottom: 15px;
+}
+
+.seniorbook #message {
     background-color: #e7e7e7;
     color: black;
     outline: none;
     font-family: 'PT Serif', serif;
     font-size: 16px;
     padding: 15px;
-    width: calc(calc(1140px / 3) - 15px);
+    width: calc(100% - 30px);
     resize: none;
+    display: block;
     border: none;
     transition: background-color 0.2s;
 }
 
-#from {
+.seniorbook #from {
     font-family: 'PT Sans', sans-serif;
     background-color: #e7e7e7;
     padding: 15px;
@@ -156,9 +182,8 @@
     transition: background-color 0.2s;
 }
 
-#submit {
+.seniorbook #submit {
     width: 100%;
-    margin-top: 20px;
     font-family: 'PT Serif', serif;
     font-size: 16px;
     cursor: pointer;
@@ -168,7 +193,8 @@
     outline: none;
 }
 
-.post-message {
+.seniorbook .post-message {
+    cursor: pointer;
     display: block;
     max-width: calc(calc(1140px / 3) - 15px);
     margin: 0 auto;
@@ -181,7 +207,7 @@
     text-align: center;
 }
 
-.post-message-text {
+.seniorbook .post-message-text {
     max-width: calc(calc(1140px / 3) - 15px);
     margin: 0 auto;
     padding-bottom: 15px;
@@ -190,6 +216,97 @@
     color: gray;
 }
 
-.post-message:hover {
-    background-color: #5A0000;
+.seniorbook .post-message:hover {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' style='isolation:isolate' viewBox='495.787 286 96 125'%3E%3Cpath d='M591.787 286l-31.534 125h-64.466l31.535-125h64.465z' fill='%23DAA520'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position-x: -100px;
+    background-size: 100px;
+    animation-name: shimmer;
+    animation-duration: 1s;
+    animation-timing-function: ease-in-out;
+}
+
+@keyframes shimmer {
+    from {
+        background-position-x: -100px;
+    }
+    to {
+        background-position-x: calc(100% + 100px);
+    }
+}
+
+.seniorbook .unmoderated {
+    font-family: 'PT Sans', sans-serif;
+    text-align: center;
+}
+
+.seniorbook .form .name {
+    font-family: 'PT Sans', sans-serif;
+    font-size: 16px;
+    border: none;
+    background: none;
+    outline: none;
+}
+
+.seniorbook [type="email"] {
+    display: none;
+}
+
+.seniorbook .form.disabled {
+    opacity: 0.5;
+    cursor: wait;
+    transition: all 0.2s;
+}
+
+.seniorbook .form.disabled * {
+    pointer-events: none;
+}
+
+.seniorbook #imageupload {
+    display: none;
+}
+
+.seniorbook [for="imageupload"] {
+    background-color: #e7e7e7;
+    padding: 5px;
+    font-family: 'PT Serif', serif;
+    font-size: 16px;
+    display: block;
+    cursor: pointer;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.seniorbook .submitted {
+    display: none;
+}
+
+.seniorbook .submitted,
+.seniorbook .warning {
+    font-family: 'PT Sans', sans-serif;
+    color: black;
+    margin: 0;
+}
+
+.seniorbook .warning {
+    margin-bottom: 15px;
+}
+
+.full.advanced-embed {
+    max-width: none;
+    width: 100%;
+}
+
+.search-messages {
+    font-family: 'PT Sans', sans-serif;
+    font-size: 16px;
+    background-color: #e7e7e7;
+    border: none;
+    outline: none;
+    padding: 15px;
+    margin: 0 auto;
+    display: block;
+    margin-bottom: 15px;
+    max-width: calc(calc(1140px / 3) - 45px)!important;
+    width: 100%;
 }
